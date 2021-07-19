@@ -24,16 +24,16 @@ body {
     color: var(--text-color);
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     transition: 0.04s ease-out;
     overflow: hidden;
     justify-content: center;
   }
 
 .center {
-    /* display: flex; */
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -45,6 +45,14 @@ body {
 
 .medium {
     font-size: 1.5rem;
+}
+
+.small {
+    font-size: 1rem;
+}
+
+.absurdlysmall {
+    font-size: 0.75rem;
 }
 
 .funny {
@@ -69,4 +77,12 @@ a {
 a:hover {
     color: gray;
 
+}
+#weather{
+    padding:1rem;
+    position: absolute;
+}
+#weatherimg {
+    margin: -1rem;
+    width:4rem;
 }

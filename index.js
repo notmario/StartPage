@@ -80,11 +80,13 @@
     }
     function getWeatherData() {
         window.addEventListener("load", async function() {
-            var city = "Perth";
+            const city = "Perth"; //Hardcoding aarrgh
+            const hour = new Date().getHours();
+            const dayOrNight = (hour >= 7 && hour <= 18) ? "day" : "night";
             await fetch("https://api.weatherapi.com/v1/current.json?key=e1830767ff0446e7a47132846211907&q="+city).then((response) => {
                 return response.json();
             }).then((data) => {
-                document.getElementById("weather").innerText = `${data.current.temp_c}°C ${data.current.condition.text}. Feels like ${data.current.feelslike_c}°C. UV ${data.current.uv}`
+                document.getElementById("weather").innerHTML = `${data.current.temp_c}°C&nbsp;&nbsp;&nbsp;<img id="weatherimg" src="img/weather/64x64/${dayOrNight}/${data.current.condition.icon}.png" alt="${data.current.condition.text}"><br>${data.current.condition.text}<br><span class="absurdlysmall">Feels like ${data.current.feelslike_c}°C. UV ${data.current.uv}</span>`
             })
         });
     }
