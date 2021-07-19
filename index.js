@@ -80,29 +80,7 @@
     }
     function getWeatherData() {
         window.addEventListener("load", async function() {
-            var city = {
-                "ip": "14.200.229.160",
-                "hostname": "14-200-229-160.tpgi.com.au",
-                "city": "Perth",
-                "region": "Western Australia",
-                "country": "AU",
-                "loc": "-31.9522,115.8614",
-                "org": "AS7545 TPG Telecom Limited",
-                "postal": "6000",
-                "timezone": "Australia/Perth",
-                "readme": "https://ipinfo.io/missingauth"
-              };
-            await fetch("https://ipinfo.io/json")
-                .then((response)=>{
-                    return response.json();
-                })
-                .then((myJson) => {
-                    city = myJson.city;
-                })
-                .catch(function (error) {
-                    console.log("Error: "+error);
-                })
-            console.log(city);
+            var city = "Perth";
             await fetch("https://api.weatherapi.com/v1/current.json?key=e1830767ff0446e7a47132846211907&q="+city).then((response) => {
                 return response.json();
             }).then((data) => {
