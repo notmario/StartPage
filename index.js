@@ -84,7 +84,7 @@
             await fetch("https://api.weatherapi.com/v1/current.json?key=e1830767ff0446e7a47132846211907&q="+city).then((response) => {
                 return response.json();
             }).then((data) => {
-                document.getElementById("weather").innerText = `${data.current.temp_c}°C ${data.current.condition.text}. Feels like ${data.current.feelslike_c}°C`
+                document.getElementById("weather").innerText = `${data.current.temp_c}°C ${data.current.condition.text}. Feels like ${data.current.feelslike_c}°C. UV ${data.current.uv}`
             })
         });
     }
