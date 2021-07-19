@@ -7,11 +7,11 @@
   <title>New Tab</title>
 
   <script>
-    var messageID = Math.floor(Math.random()*7);
-    console.log(messageID);
-    var messageNormal = ["Funny message","Wow comedy","//give me api keys","epic!","wow. anyways do something","@everyone you should be working on the movie","css is pain"]
-    var messageSchool = ["school. it exists","off and away all day","Do some work or smth","Wow incredible","Mathspace lol","bang!","school related message"]
-    var messageNight = ["Go to sleep","go to bed","ok bye slep time :bed:","should you really go to sleep? yes.","filler message, go to sleep","go to sleep you fool","sleep is essential"]
+    //var messageID = Math.floor(Math.random()*7);
+    //console.log(messageID);
+    //var messageNormal = ["Funny message","Wow comedy","//give me api keys","epic!","wow. anyways do something","@everyone you should be working on the movie","css is pain"]
+    //var messageSchool = ["school. it exists","off and away all day","Do some work or smth","Wow incredible","Mathspace lol","wow school so cool","school related message"]
+    //var messageNight = ["Go to sleep","go to bed","ok bye slep time :bed:","should you really go to sleep? yes.","filler message, go to sleep","go to sleep you fool","sleep is essential"]
     function updateTime() {
         var currentTime = new Date();
         var hours = currentTime.getHours();
@@ -72,18 +72,26 @@
         minutes = (minutes >= 10) ? minutes : "0" + minutes;
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
         var d_str = dayText + ", " + dateText + " " + monthText;
-        var t_str = hours + ":" + minutes + ":" + seconds;
-        var messageArray = messageNormal;
-        if (hours >= 23 || hours <= 2) messageArray = messageNight;
-        if (hours >= 8 && hours < 4 && day >= 1 & day <= 5) messageArray = messageSchool;
+        var t_str = hours + ":" + minutes// + ":" + seconds;
+        //var messageArray = messageNormal;
+        //if (hours >= 23 || hours <= 2) messageArray = messageNight;
+        if (hours >= 8 && hours < 4 && day >= 1 & day <= 5) {
+          //messageArray = messageSchool;
+          if (document.getElementById("time")) {
+            document.getElementById("mediaLinks").style.display = "none";
+            document.getElementById("codingLinks").style.display = "none";
+            document.getElementById("schoolLinks").innerHTML = document.getElementById("schoolLinks").innerHTML.split("<br>").join("&nbsp;".repeat(8));
+            document.getElementById("schoolLinks").classList.add("funny");
+          }
+        }
         if (document.getElementById("time")) {
             document.getElementById("time").innerText = t_str;
             document.getElementById("date").innerText = d_str;
-            document.getElementById("funnymessage").innerText = messageArray[messageID];
+            //document.getElementById("funnymessage").innerText = messageArray[messageID];
         }
     }
     updateTime(); // immeditatelly runs the function, so that there is no lag
-    setInterval(updateTime, 50);
+    setInterval(updateTime, 250);
   </script>
 
   <style>
@@ -95,7 +103,15 @@
       <p class="medium" id="weather"></p>
       <p class="large" id="time"></p>
       <p class="medium" id="date"></p>
-      <p class="small" id="funnymessage">Funny message</p>
+      <div class="small" id="linksContainer">
+        <div id="mediaLinks"><h2>media</h2><a href="https://youtube.com">youtube</a></div>
+        <div id="schoolLinks"><h2>school</h2>
+          <a href="https://connect.det.wa.edu.au">connect</a><br>
+          <a href="https://outlook.office.com/mail/inbox">outlook</a>
+        </div>
+        <div id="codingLinks"><h2>coding</h2>
+          <a href="https://github.com">github</a><br>
+      </div>
     </div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 :root {
     --dark-bg: #121212;
+    --dark-bg-2: #101010;
     --text-color: white;
 }
 
@@ -13,14 +14,20 @@
 }
 
 body {
-    background-color: var(--dark-bg);
+    background: repeating-linear-gradient(
+        60deg,
+        var(--dark-bg),
+        var(--dark-bg) 200px,
+        var(--dark-bg-2) 200px,
+        var(--dark-bg-2) 400px
+      );
     color: var(--text-color);
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: 0.4s ease-out;
+    transition: 0.04s ease-out;
     overflow: hidden;
     justify-content: center;
   }
@@ -33,9 +40,33 @@ body {
 }
 
 .large {
-    font-size: 5rem;
+    font-size: 9rem;
 }
 
 .medium {
     font-size: 1.5rem;
+}
+
+.funny {
+    font-size: 1.15rem;
+}
+
+#linksContainer {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 2rem;
+}
+#linksContainer div {
+    margin: 0 3rem;
+}
+a {
+    color: lightgray;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    font-size: 120%;
+}
+a:hover {
+    color: gray;
+
 }
