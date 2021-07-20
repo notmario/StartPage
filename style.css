@@ -41,7 +41,9 @@ body {
 .large {
   font-size: 9rem;
 }
-
+.bigbutnottoobig {
+    font-size: 2.25rem;
+}
 .medium {
   font-size: 1.5rem;
 }
@@ -81,6 +83,6 @@ a:hover {
   position: absolute;
 }
 #weatherimg {
-  margin: -0.5rem;
-  width: 4rem;
+  margin: -0.5rem -0.8rem;
+  width: 3rem;
 }

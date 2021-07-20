@@ -105,9 +105,9 @@ function getWeatherData() {
         return response.json();
       })
       .then((data) => {
-        document.getElementById("weather").innerHTML = `${
+        document.getElementById("weather").innerHTML = `<span class="bigbutnottoobig">${
           data.current.temp_c
-        }°C&nbsp;&nbsp;&nbsp;<img id="weatherimg" src="img/weather/64x64/${dayOrNight}/${data.current.condition.icon
+        }°C</span>&nbsp;&nbsp;&nbsp;<img id="weatherimg" src="img/weather/64x64/${dayOrNight}/${data.current.condition.icon
           .split("/")
           .pop()}" alt="${data.current.condition.text}"><br>${
           data.current.condition.text
