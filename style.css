@@ -83,6 +83,6 @@ a:hover {
     position: absolute;
 }
 #weatherimg {
-    margin: -1rem;
+    margin: -.5rem;
     width:4rem;
 }
