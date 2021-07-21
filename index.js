@@ -66,7 +66,7 @@ function updateTime() {
   var t_str = hours + ":" + minutes; // + ":" + seconds;
   //var messageArray = messageNormal;
   //if (hours >= 23 || hours <= 2) messageArray = messageNight;
-  if (hours >= 8 && hours < 4 && (day >= 1) & (day <= 5)) {
+  if (hours >= 8 && hours < 4 && day >= 1 && day <= 5) {
     //messageArray = messageSchool;
     document.getElementById("mediaLinks").style.display = "none";
     document.getElementById("codingLinks").style.display = "none";
