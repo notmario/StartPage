@@ -83,6 +83,13 @@ a:hover {
   position: absolute;
 }
 #weatherimg {
-  margin: -0.5rem -0.8rem;
+  margin: -0.75rem -0.8rem;
   width: 3rem;
+}
+#timetable, #timetableFull {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: none;
+  text-align: right;
 }
