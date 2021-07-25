@@ -147,10 +147,10 @@ const timetable = [
     new Subject(getStorage("subThuA2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
     new Subject(getStorage("subThuA3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject(getStorage("subThuA4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
-    new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject(getStorage("subThuA5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
-    new Subject(getStorage("subThuA6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
+    new Subject("Advocacy",hourMinuteToNumber(11,50),hourMinuteToNumber(12,30)),
+    new Subject("Lunch",hourMinuteToNumber(12,30),hourMinuteToNumber(13,10)),
+    new Subject(getStorage("subThuA5","Period 5"),hourMinuteToNumber(13,10),hourMinuteToNumber(14,05)),
+    new Subject(getStorage("subThuA6","Period 6"),hourMinuteToNumber(14,05),hourMinuteToNumber(15,00)),
     new Subject("Home",hourMinuteToNumber(15,00),hourMinuteToNumber(16,00)),
   ], // Thursday
   [
@@ -211,10 +211,10 @@ const timetable = [
     new Subject(getStorage("subThuB2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
     new Subject(getStorage("subThuB3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject(getStorage("subThuB4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
-    new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject(getStorage("subThuB5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
-    new Subject(getStorage("subThuB6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
+    new Subject("Advocacy",hourMinuteToNumber(11,50),hourMinuteToNumber(12,30)),
+    new Subject("Lunch",hourMinuteToNumber(12,30),hourMinuteToNumber(13,10)),
+    new Subject(getStorage("subThuA5","Period 5"),hourMinuteToNumber(13,10),hourMinuteToNumber(14,05)),
+    new Subject(getStorage("subThuA6","Period 6"),hourMinuteToNumber(14,05),hourMinuteToNumber(15,00)),
     new Subject("Home",hourMinuteToNumber(15,00),hourMinuteToNumber(16,00)),
   ], // Thursday
   [
@@ -371,6 +371,10 @@ for (weekID of ["A","B"]) {
       let input = document.createElement("input");
       label.innerText = `${period}: `;
       input.value = getStorage(`sub${["Mon","Tue","Wed","Thu","Fri"][day]}${weekID}${period}`,`Period ${period}`)
+      if (day == 3 && period == 4) {
+        input.value = "Advocacy";
+        input.disabled = true;
+      }
       let val = `sub${["Mon","Tue","Wed","Thu","Fri"][day]}${weekID}${period}`;
       input.addEventListener("keyup", function(){
         console.log(val);
