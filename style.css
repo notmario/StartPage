@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 :root {
-  --dark-bg: #121212;
-  --dark-bg-2: #101010;
+  --bg: #121212;
+  --bg-2: #101010;
   --text-color: white;
+  --link-color: lightgray;
+  --link-hover: gray;
 }
 
 * {
@@ -15,10 +17,10 @@
 body {
   background: repeating-linear-gradient(
     60deg,
-    var(--dark-bg),
-    var(--dark-bg) 200px,
-    var(--dark-bg-2) 200px,
-    var(--dark-bg-2) 400px
+    var(--bg),
+    var(--bg) 200px,
+    var(--bg-2) 200px,
+    var(--bg-2) 400px
   );
   color: var(--text-color);
   width: 100%;
@@ -41,8 +43,11 @@ body {
 .large {
   font-size: 9rem;
 }
+.bitdefender {
+  font-size: 3rem;
+}
 .bigbutnottoobig {
-    font-size: 2.25rem;
+  font-size: 2.25rem;
 }
 .medium {
   font-size: 1.5rem;
@@ -70,17 +75,22 @@ body {
   margin: 0 3rem;
 }
 a {
-  color: lightgray;
+  color: var(--link-color);
   transition: color 0.2s ease;
   text-decoration: none;
   font-size: 120%;
 }
 a:hover {
-  color: gray;
+  color: var(--link-hover);
 }
 #weather {
   padding: 1rem;
+  margin-left: -10vw;
+  transition: margin-left .6s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: absolute;
+}
+#weather.sliding {
+  margin-left: 0;
 }
 #weatherimg {
   margin: -0.75rem -0.8rem;
@@ -92,4 +102,32 @@ a:hover {
   right: 1rem;
   display: none;
   text-align: right;
+}
+#settingsButton {
+  position:absolute;
+  left: 1rem;
+  bottom: 1rem;
+  width: 4rem;
+  opacity: .1;
+  transition: opacity .2s ease;
+  z-index: 999;
+}
+#settingsButton:hover {
+  opacity: .3;
+}
+.flexboxlol {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+.flexboxlol div {
+  padding: 0 1rem;
+}
+#searchBar {
+  width: 50rem;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
 }

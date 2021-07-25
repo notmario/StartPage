@@ -9,6 +9,12 @@ Date.prototype.getWeek = function() {
 } 
 // lmao
 
+function getStorage(item,unset){
+  return localStorage.getItem(item) ?? unset;
+}
+
+console.log(getStorage("subMonA1","Period 1"))
+
 function updateTime() {
   var currentTime = new Date();
   var hours = currentTime.getHours();
@@ -99,104 +105,128 @@ function hourMinuteToNumber(hour,minute,second = 0){
 const timetable = [
   [], // Sunday
   [
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
     new Subject("Advocacy",hourMinuteToNumber(8,45),hourMinuteToNumber(9,00)),
-    new Subject("Mathematics",hourMinuteToNumber(9,0),hourMinuteToNumber(10,50)),
+    new Subject(getStorage("subMonA1","Period 1"),hourMinuteToNumber(9,0),hourMinuteToNumber(9,55)),
+    new Subject(getStorage("subMonA2","Period 2"),hourMinuteToNumber(9,55),hourMinuteToNumber(10,50)),
     new Subject("Recess",hourMinuteToNumber(10,50),hourMinuteToNumber(11,15)),
-    new Subject("Learning for Life",hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
-    new Subject("Careers",hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
+    new Subject(getStorage("subMonA3","Period 3"),hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
+    new Subject(getStorage("subMonA4","Period 4"),hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
     new Subject("Lunch",hourMinuteToNumber(13,05),hourMinuteToNumber(13,40)),
-    new Subject("Science",hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
-    new Subject("Japanese",hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
+    new Subject(getStorage("subMonA5","Period 5"),hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
+    new Subject(getStorage("subMonA6","Period 6"),hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
     new Subject("Home",hourMinuteToNumber(15,30),hourMinuteToNumber(16,00)),
   ], // Monday
   [
-    new Subject("Japanese",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subTueA1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subTueA2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("Physical Education",hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject("Mod Time",hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
+    new Subject(getStorage("subTueA3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subTueA4","Mod Time"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
     new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject("HASS",hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
-    new Subject("Japanese",hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
+    new Subject(getStorage("subTueA5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subTueA6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,15),hourMinuteToNumber(16,00)),
   ], // Tuesday
   [
-    new Subject("Electronics",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subWedA1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subWedA2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("HASS",hourMinuteToNumber(10,55),hourMinuteToNumber(12,45)),
+    new Subject(getStorage("subWedA3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subWedA4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
     new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject("Innovations",hourMinuteToNumber(13,25),hourMinuteToNumber(15,15)),
+    new Subject(getStorage("subWedA5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subWedA6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,15),hourMinuteToNumber(16,00)),
   ], // Wednesday
   [
-    new Subject("English",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subThuA1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subThuA2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("Innovations",hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject("Advocacy",hourMinuteToNumber(11,50),hourMinuteToNumber(12,30)),
-    new Subject("Lunch",hourMinuteToNumber(12,30),hourMinuteToNumber(13,10)),
-    new Subject("Physical Education",hourMinuteToNumber(13,10),hourMinuteToNumber(14,05)),
-    new Subject("Health",hourMinuteToNumber(14,05),hourMinuteToNumber(15,00)),
+    new Subject(getStorage("subThuA3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subThuA4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
+    new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
+    new Subject(getStorage("subThuA5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subThuA6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,00),hourMinuteToNumber(16,00)),
   ], // Thursday
   [
-    new Subject("Advocacy",hourMinuteToNumber(8,45),hourMinuteToNumber(9,00)),
-    new Subject("Photography",hourMinuteToNumber(9,0),hourMinuteToNumber(10,50)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subFriA1","Period 1"),hourMinuteToNumber(9,0),hourMinuteToNumber(9,55)),
+    new Subject(getStorage("subFriA2","Period 2"),hourMinuteToNumber(9,55),hourMinuteToNumber(10,50)),
     new Subject("Recess",hourMinuteToNumber(10,50),hourMinuteToNumber(11,15)),
-    new Subject("Science",hourMinuteToNumber(11,15),hourMinuteToNumber(13,05)),
+    new Subject(getStorage("subFriA3","Period 3"),hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
+    new Subject(getStorage("subFriA4","Period 4"),hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
     new Subject("Lunch",hourMinuteToNumber(13,05),hourMinuteToNumber(13,40)),
-    new Subject("Learning For Life",hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
-    new Subject("Maths",hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
+    new Subject(getStorage("subFriA5","Period 5"),hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
+    new Subject(getStorage("subFriA6","Period 6"),hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
     new Subject("Home",hourMinuteToNumber(15,30),hourMinuteToNumber(16,00)),
   ], // Friday
   [], // Saturday
 
   [], // Sunday
   [
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
     new Subject("Advocacy",hourMinuteToNumber(8,45),hourMinuteToNumber(9,00)),
-    new Subject("Mathematics",hourMinuteToNumber(9,0),hourMinuteToNumber(10,50)),
+    new Subject(getStorage("subMonB1","Period 1"),hourMinuteToNumber(9,0),hourMinuteToNumber(9,55)),
+    new Subject(getStorage("subMonB2","Period 2"),hourMinuteToNumber(9,55),hourMinuteToNumber(10,50)),
     new Subject("Recess",hourMinuteToNumber(10,50),hourMinuteToNumber(11,15)),
-    new Subject("Science",hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
-    new Subject("Health",hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
+    new Subject(getStorage("subMonB3","Period 3"),hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
+    new Subject(getStorage("subMonB4","Period 4"),hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
     new Subject("Lunch",hourMinuteToNumber(13,05),hourMinuteToNumber(13,40)),
-    new Subject("Electronics",hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
-    new Subject("Careers",hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
+    new Subject(getStorage("subMonB5","Period 5"),hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
+    new Subject(getStorage("subMonB6","Period 6"),hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
     new Subject("Home",hourMinuteToNumber(15,30),hourMinuteToNumber(16,00)),
   ], // Monday
   [
-    new Subject("Japanese",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subTueB1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subTueB2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("Photography",hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject("Mod Time",hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
+    new Subject(getStorage("subTueB3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subTueB4","Mod Time"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
     new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject("HASS",hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
-    new Subject("English",hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
+    new Subject(getStorage("subTueB5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subTueB6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,15),hourMinuteToNumber(16,00)),
   ], // Tuesday
   [
-    new Subject("HASS",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subWedB1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subWedB2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("Learning For Life",hourMinuteToNumber(10,55),hourMinuteToNumber(12,45)),
+    new Subject(getStorage("subWedB3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subWedB4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
     new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
-    new Subject("Innovations",hourMinuteToNumber(13,25),hourMinuteToNumber(15,15)),
+    new Subject(getStorage("subWedB5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subWedB6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,15),hourMinuteToNumber(16,00)),
   ], // Wednesday
   [
-    new Subject("English",hourMinuteToNumber(8,45),hourMinuteToNumber(10,35)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subThuB1","Period 1"),hourMinuteToNumber(8,45),hourMinuteToNumber(9,40)),
+    new Subject(getStorage("subThuB2","Period 2"),hourMinuteToNumber(9,40),hourMinuteToNumber(10,35)),
     new Subject("Recess",hourMinuteToNumber(10,35),hourMinuteToNumber(10,55)),
-    new Subject("Innovations",hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
-    new Subject("Advocacy",hourMinuteToNumber(11,50),hourMinuteToNumber(12,30)),
-    new Subject("Lunch",hourMinuteToNumber(12,30),hourMinuteToNumber(13,10)),
-    new Subject("Japanese",hourMinuteToNumber(13,10),hourMinuteToNumber(14,05)),
-    new Subject("Photography",hourMinuteToNumber(14,05),hourMinuteToNumber(15,00)),
+    new Subject(getStorage("subThuB3","Period 3"),hourMinuteToNumber(10,55),hourMinuteToNumber(11,50)),
+    new Subject(getStorage("subThuB4","Period 4"),hourMinuteToNumber(11,50),hourMinuteToNumber(12,45)),
+    new Subject("Lunch",hourMinuteToNumber(12,45),hourMinuteToNumber(13,25)),
+    new Subject(getStorage("subThuB5","Period 5"),hourMinuteToNumber(13,25),hourMinuteToNumber(14,20)),
+    new Subject(getStorage("subThuB6","Period 6"),hourMinuteToNumber(14,20),hourMinuteToNumber(15,15)),
     new Subject("Home",hourMinuteToNumber(15,00),hourMinuteToNumber(16,00)),
   ], // Thursday
   [
-    new Subject("Advocacy",hourMinuteToNumber(8,45),hourMinuteToNumber(9,00)),
-    new Subject("Science",hourMinuteToNumber(9,0),hourMinuteToNumber(10,50)),
+    new Subject("Before School",hourMinuteToNumber(0,0),hourMinuteToNumber(8,45)),
+    new Subject(getStorage("subFriB1","Period 1"),hourMinuteToNumber(9,0),hourMinuteToNumber(9,55)),
+    new Subject(getStorage("subFriB2","Period 2"),hourMinuteToNumber(9,55),hourMinuteToNumber(10,50)),
     new Subject("Recess",hourMinuteToNumber(10,50),hourMinuteToNumber(11,15)),
-    new Subject("Physical Education",hourMinuteToNumber(11,15),hourMinuteToNumber(13,05)),
+    new Subject(getStorage("subFriB3","Period 3"),hourMinuteToNumber(11,15),hourMinuteToNumber(12,10)),
+    new Subject(getStorage("subFriB4","Period 4"),hourMinuteToNumber(12,10),hourMinuteToNumber(13,05)),
     new Subject("Lunch",hourMinuteToNumber(13,05),hourMinuteToNumber(13,40)),
-    new Subject("Maths",hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
-    new Subject("Electronics",hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
+    new Subject(getStorage("subFriB5","Period 5"),hourMinuteToNumber(13,40),hourMinuteToNumber(14,35)),
+    new Subject(getStorage("subFriB6","Period 6"),hourMinuteToNumber(14,35),hourMinuteToNumber(15,30)),
     new Subject("Home",hourMinuteToNumber(15,30),hourMinuteToNumber(16,00)),
   ], // Friday
   [], // Saturday
@@ -234,6 +264,7 @@ function getWeatherData() {
         }<br><span class="absurdlysmall">Feels like ${
           data.current.feelslike_c
         }°C. UV ${data.current.uv}</span>`;
+        document.getElementById("weather").classList.add("sliding")
       });
   };
 
@@ -243,16 +274,29 @@ function getWeatherData() {
 function updateTimetable(){
   const now = new Date();
   const nowStamp = hourMinuteToNumber(now.getHours(),now.getMinutes(),now.getSeconds())
+  // nowStamp = hourMinuteToNumber(8,46)
   const week = now.getWeek()%2;
-  const trueDate = now.getDay() + week*7;
+  const trueDate = now.getDay() + week*7 - 5;
+  // trueDate = 3;
   const tomorrow = (trueDate+1)%14;
   if (timetable[tomorrow].length == 0) {
     document.getElementById("tomorrowSubjects").innerHTML = "nothing!";
   } else {
     let text = "";
+    let currentSub = "temp";
+    let length = 0;
     for (subject of timetable[tomorrow]) {
-      if (["Recess","Lunch","Home"].indexOf(subject.name) != -1) continue;
-      text += ((subject.finish-subject.start > 3600) ? "Double " : "") + subject.name + "<br>"
+      if (currentSub == subject.name) {
+        length++;
+      } else {
+        let oldSub = currentSub;
+        currentSub = subject.name;
+        let oldLength = length;
+        length = 0;
+        if (["Before School","Recess","Lunch","Home","temp"].indexOf(oldSub) != -1) continue;
+        text += ((oldLength > 0) ? "Double " : "") + oldSub + "<br>"
+
+      }
     }
     document.getElementById("tomorrowSubjects").innerHTML = text;
   }
@@ -260,11 +304,11 @@ function updateTimetable(){
   var nextSub = new Subject("temp",0,0);
   var pickNextOne = false;
   for (subject of timetable[trueDate]) {
-    if (pickNextOne) {
+    if (pickNextOne && nextSub.name != thisSub) {
       nextSub = subject;
       break;
     }
-    if (subject.start < nowStamp && nowStamp < subject.finish) {
+    if (subject.start <= nowStamp && nowStamp <= subject.finish) {
       thisSub = subject;
       pickNextOne = true;
     }
@@ -275,7 +319,7 @@ function updateTimetable(){
     return "shit";
   }
   document.getElementById("upNextSubject").innerHTML = ((nextSub.finish-nextSub.start > 3600) ? "Double " : "") + nextSub.name;
-  const timeLeft = nextSub.finish-nowStamp;
+  const timeLeft = nextSub.start-nowStamp;
   if (timeLeft < 600) {
     document.getElementById("timeLeft").innerHTML = `in ${Math.floor(timeLeft/60)}m ${timeLeft%60}s`;
   } else if (timeLeft < 3600) {
@@ -295,6 +339,115 @@ if (new Date().getHours() >= 16) {
 updateTime(); // immeditatelly runs the function, so that there is no lag
 setInterval(updateTime, 500);
 updateTimetable(); // immeditatelly runs the function, so that there is no lag
-setInterval(updateTimetable, 500); // sus
+//setInterval(updateTimetable, 500); // sus
 getWeatherData();
 setInterval(getWeatherData, 900000); // 15 minutes
+
+let settingsShown = false;
+document.getElementById("settings").style.display = "none";
+document.getElementById("settingsButton").addEventListener("click",function(){
+  if (!settingsShown) {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("settings").style.display = "block";
+  } else {
+    document.getElementById("main").style.display = "block";
+    document.getElementById("settings").style.display = "none";
+  }
+  console.log(document.getElementById("settings").style.display)
+  settingsShown=!settingsShown;
+})
+
+for (weekID of ["A","B"]) {
+  for (day in ["Monday","Tuesday","Wednesday","Thursday","Friday"]) {
+    let dayTitle = document.createElement("div");
+    dayTitle.classList.add("medium")
+    dayTitle.innerHTML = `${["Monday","Tuesday","Wednesday","Thursday","Friday"][day]} ${weekID}`;
+    document.getElementById("timetableInputHolder").appendChild(dayTitle)
+    let theflexbox = document.createElement("div");
+    theflexbox.classList.add("flexboxlol");
+    for (period of [1,2,3,4,5,6]) {
+      let inputHolder = document.createElement("div");
+      let label = document.createElement("label");
+      let input = document.createElement("input");
+      label.innerText = `${period}: `;
+      input.value = getStorage(`sub${["Mon","Tue","Wed","Thu","Fri"][day]}${weekID}${period}`,`Period ${period}`)
+      let val = `sub${["Mon","Tue","Wed","Thu","Fri"][day]}${weekID}${period}`;
+      input.addEventListener("keyup", function(){
+        console.log(val);
+        localStorage.setItem(val,this.value)
+      });
+      inputHolder.appendChild(label)
+      inputHolder.appendChild(input)
+      theflexbox.appendChild(inputHolder)
+    }
+    document.getElementById("timetableInputHolder").appendChild(theflexbox)
+  }
+  let br = document.createElement("br")
+  document.getElementById("timetableInputHolder").appendChild(br)
+}
+let notice = document.createElement("div")
+notice.innerText = "Reload page for changes to take effect"
+
+document.getElementById("themeInput").addEventListener("mouseup", function(){
+  let currentVal = getStorage("themeSetting","dark")
+  if (currentVal == "dark") {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#e0e0e0');
+    r.style.setProperty('--bg-2', '#d8d8d8');
+    r.style.setProperty('--text-color', 'black');
+    r.style.setProperty('--link-color', '#181818');
+    r.style.setProperty('--link-hover', '#090909');
+    document.getElementById("settingsButton").src="img/settingsBlack.png";
+    localStorage.setItem("themeSetting","light");
+  } else {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#121212');
+    r.style.setProperty('--bg-2', '#101010');
+    r.style.setProperty('--text-color', 'white');
+    r.style.setProperty('--link-color', 'lightgray');
+    r.style.setProperty('--link-hover', 'gray');
+    document.getElementById("settingsButton").src="img/settings.png";
+    localStorage.setItem("themeSetting","dark");
+  }
+})
+document.getElementById("themeInput").checked = getStorage("themeSetting","dark") == "light";
+if (getStorage("themeSetting","dark") == "light") {
+  var r = document.querySelector(':root');
+  r.style.setProperty('--bg', '#e0e0e0');
+  r.style.setProperty('--bg-2', '#d8d8d8');
+  r.style.setProperty('--text-color', 'black');
+  r.style.setProperty('--link-color', '#181818');
+  r.style.setProperty('--link-hover', '#090909');
+}
+
+document.getElementById("timetableInputHolder").appendChild(notice)
+document.getElementById("timetableInputHolder").style.display = "none";
+document.getElementById("toggleTimetableInput").addEventListener("mousedown", function(){
+  document.getElementById("timetableInputHolder").style.display = 
+    document.getElementById("timetableInputHolder").style.display == "none" ? "block" : "none";
+  document.getElementById("toggleTimetableInput").innerText = 
+    document.getElementById("toggleTimetableInput").innerText == "Timetable ▸" ? "Timetable ▾" : "Timetable ▸";
+  
+})
+
+
+document.getElementById("searchBar").placeholder = `Search with ${getStorage("searchEngine","Google")}`
+document.getElementById("searchEngine").value = getStorage("searchEngine","Google");
+
+document.getElementById("searchEngine").addEventListener("change", function(){
+  document.getElementById("searchBar").placeholder = `Search with ${this.value}`
+  localStorage.setItem("searchEngine",this.value)
+})
+
+document.getElementById("searchBar").addEventListener("keypress", function(e){
+  if (e.code === "Enter") {
+    if (this.value.length > 0) {
+      q = {
+        "Google": "https://google.com/search?q=" + this.value,
+        "DuckDuckGo": "https://duckduckgo.com/?q=" + this.value,
+        "Bing": "https://bing.com/?q=" + this.value,
+      }
+      window.location.href = q[getStorage("searchEngine","Google")];
+    }
+  }
+})
