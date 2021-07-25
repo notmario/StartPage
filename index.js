@@ -276,7 +276,7 @@ function updateTimetable(){
   const nowStamp = hourMinuteToNumber(now.getHours(),now.getMinutes(),now.getSeconds())
   // nowStamp = hourMinuteToNumber(8,46)
   const week = now.getWeek()%2;
-  const trueDate = now.getDay() + week*7 - 5;
+  const trueDate = now.getDay() + week*7;
   // trueDate = 3;
   const tomorrow = (trueDate+1)%14;
   if (timetable[tomorrow].length == 0) {
