@@ -13,7 +13,16 @@ function getStorage(item,unset){
   return localStorage.getItem(item) ?? unset;
 }
 
-console.log(getStorage("subMonA1","Period 1"))
+function hslToHex(h, s, l) {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
 
 function updateTime() {
   var currentTime = new Date();
@@ -353,7 +362,7 @@ document.getElementById("settingsButton").addEventListener("click",function(){
     document.getElementById("main").style.display = "block";
     document.getElementById("settings").style.display = "none";
   }
-  console.log(document.getElementById("settings").style.display)
+  // console.log(document.getElementById("settings").style.display)
   settingsShown=!settingsShown;
 })
 
@@ -377,7 +386,7 @@ for (weekID of ["A","B"]) {
       }
       let val = `sub${["Mon","Tue","Wed","Thu","Fri"][day]}${weekID}${period}`;
       input.addEventListener("keyup", function(){
-        console.log(val);
+        // console.log(val);
         localStorage.setItem(val,this.value)
       });
       inputHolder.appendChild(label)
@@ -392,71 +401,123 @@ for (weekID of ["A","B"]) {
 let notice = document.createElement("div")
 notice.innerText = "Reload page for changes to take effect"
 
+const themeArr = {
+  "dark": ()=>{return {
+    bg: "#121212",
+    bg2: "#101010",
+    textCol: "white",
+    linkCol: "lightgray",
+    linkHov: "gray",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "none",
+      opacity: "0"
+    }
+  }},
+  "light": ()=>{return {
+    bg: "#e0e0e0",
+    bg2: "#d8d8d8",
+    textCol: "black",
+    linkCol: "#181818",
+    linkHov: "#090909",
+    settingSrc: "img/settingsBlack.png",
+    bgImg: {
+      display: "none",
+      opacity: "0"
+    }
+  }},
+  "funMode": ()=>{return {
+    bg: "#121212",
+    bg2: "#101010",
+    textCol: "white",
+    linkCol: "lightgray",
+    linkHov: "gray",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "block",
+      opacity: "0.2",
+    }
+  }},
+  "trueFunMode": ()=>{return {
+    bg: "#e0e0e0",
+    bg2: "#d8d8d8",
+    textCol: "black",
+    linkCol: "#181818",
+    linkHov: "#090909",
+    settingSrc: "img/settingsBlack.png",
+    bgImg: {
+      display: "block",
+      opacity: "0.7",
+    }
+  }},
+  "abyss": ()=>{return {
+    bg: "#000c18",
+    bg2: "#000a14",
+    textCol: "white",
+    linkCol: "gray",
+    linkHov: "lightgray",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "none",
+      opacity: "0",
+    }
+  }},
+  "solLight": ()=>{return {
+    bg: "#FCF5E4",
+    bg2: "#F2EBDA",
+    textCol: "black",
+    linkCol: "#181818",
+    linkHov: "#090909",
+    settingSrc: "img/settingsBlack.png",
+    bgImg: {
+      display: "none",
+      opacity: "0",
+    }
+  }},
+  "rngDark": ()=>{
+    const hue = Math.floor(Math.random()*360)
+    return {
+    bg: hslToHex(hue,20,8),
+    bg2: hslToHex(hue,30,6),
+    textCol: "white",
+    linkCol: "lightgray",
+    linkHov: "gray",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "none",
+      opacity: "0",
+    }
+  }},
+  "rngLight": ()=>{
+    const hue = Math.floor(Math.random()*360)
+    return {
+    bg: hslToHex(hue,20,80),
+    bg2: hslToHex(hue,30,75),
+    textCol: "black",
+    linkCol: "#181818",
+    linkHov: "#090909",
+    settingSrc: "img/settingsBlack.png",
+    bgImg: {
+      display: "none",
+      opacity: "0",
+    }
+  }}
+}
+
+
 document.getElementById("themeInput").addEventListener("change", function(){
   let currentVal = this.value;
-  if (currentVal == "dark") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#121212');
-    r.style.setProperty('--bg-2', '#101010');
-    r.style.setProperty('--text-color', 'white');
-    r.style.setProperty('--link-color', 'lightgray');
-    r.style.setProperty('--link-hover', 'gray');
-    document.getElementById("settingsButton").src="img/settings.png";
-    localStorage.setItem("themeSetting","dark");
-    document.getElementById("backgroundImage").style.display = "none";
-  } else if (currentVal == "funMode") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#121212');
-    r.style.setProperty('--bg-2', '#101010');
-    r.style.setProperty('--text-color', 'white');
-    r.style.setProperty('--link-color', 'lightgray');
-    r.style.setProperty('--link-hover', 'gray');
-    document.getElementById("settingsButton").src="img/settings.png";
-    localStorage.setItem("themeSetting","funMode");
-    document.getElementById("backgroundImage").style.display = "block";
-    document.getElementById("backgroundImage").style.opacity = "0.2";
-  } else if (currentVal == "trueFunMode") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#e0e0e0');
-    r.style.setProperty('--bg-2', '#d8d8d8');
-    r.style.setProperty('--text-color', 'black');
-    r.style.setProperty('--link-color', '#181818');
-    r.style.setProperty('--link-hover', '#090909');
-    document.getElementById("settingsButton").src="img/settingsBlack.png";
-    localStorage.setItem("themeSetting","trueFunMode");
-    document.getElementById("backgroundImage").style.display = "block";
-    document.getElementById("backgroundImage").style.opacity = "0.7";
-  } else if (currentVal == "abyss") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#000c18');
-    r.style.setProperty('--bg-2', '#000a14');
-    r.style.setProperty('--text-color', 'white');
-    r.style.setProperty('--link-color', 'lightgray');
-    r.style.setProperty('--link-hover', 'gray');
-    document.getElementById("settingsButton").src="img/settings.png";
-    localStorage.setItem("themeSetting","abyss");
-    document.getElementById("backgroundImage").style.display = "none";
-  } else if (currentVal == "solLight") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#FCF5E4');
-    r.style.setProperty('--bg-2', '#F2EBDA');
-    r.style.setProperty('--text-color', 'black');
-    r.style.setProperty('--link-color', '#181818');
-    r.style.setProperty('--link-hover', '#090909');
-    document.getElementById("settingsButton").src="img/settingsBlack.png";
-    localStorage.setItem("themeSetting","solLight");
-    document.getElementById("backgroundImage").style.display = "none";
-  } else {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#e0e0e0');
-    r.style.setProperty('--bg-2', '#d8d8d8');
-    r.style.setProperty('--text-color', 'black');
-    r.style.setProperty('--link-color', '#181818');
-    r.style.setProperty('--link-hover', '#090909');
-    document.getElementById("settingsButton").src="img/settingsBlack.png";
-    localStorage.setItem("themeSetting","light");
-    document.getElementById("backgroundImage").style.display = "none";
-  }
+  localStorage.setItem("themeSetting",this.value);
+  let theme = themeArr[this.value]();
+  let r = document.querySelector(':root');
+  r.style.setProperty('--bg', theme.bg);
+  r.style.setProperty('--bg-2', theme.bg2);
+  r.style.setProperty('--text-color', theme.textCol);
+  r.style.setProperty('--link-color', theme.linkCol);
+  r.style.setProperty('--link-hover', theme.linkHov);
+  document.getElementById("settingsButton").src=theme.settingSrc;
+  document.getElementById("backgroundImage").style.display = theme.bgImg.display;
+  document.getElementById("backgroundImage").style.opacity = theme.bgImg.opacity;
 })
 if (getStorage("funModeUnlocked","no") == "yes") {
   var x = document.getElementById("themeInput");
@@ -465,9 +526,6 @@ if (getStorage("funModeUnlocked","no") == "yes") {
   option.value = "funMode";
   x.add(option);
 }
-if (getStorage("themeSetting","dark") == "funMode") {
-  document.getElementById("backgroundImage").style.display = "block";
-}
 if (getStorage("trueFunModeUnlocked","no") == "yes") {
   var x = document.getElementById("themeInput");
   var option = document.createElement("option");
@@ -475,30 +533,31 @@ if (getStorage("trueFunModeUnlocked","no") == "yes") {
   option.value = "trueFunMode";
   x.add(option);
 }
+if (getStorage("rngThemeUnlocked","no") == "yes") {
+  var x = document.getElementById("themeInput");
+  var option = document.createElement("option");
+  option.text = "RNG Dark";
+  option.value = "rngDark";
+  x.add(option);
+  var option2 = document.createElement("option");
+  option2.text = "RNG Light";
+  option2.value = "rngLight";
+  x.add(option2);
+}
 let theme = getStorage("themeSetting","dark")
-if (theme == "trueFunMode") {
-  document.getElementById("backgroundImage").style.display = "block";
-  document.getElementById("backgroundImage").style.opacity = "0.7";
-}
 document.getElementById("themeInput").value = theme;
-if (theme == "light" || theme == "trueFunMode") {
-  var r = document.querySelector(':root');
-  r.style.setProperty('--bg', '#e0e0e0');
-  r.style.setProperty('--bg-2', '#d8d8d8');
-  r.style.setProperty('--text-color', 'black');
-  r.style.setProperty('--link-color', '#181818');
-  r.style.setProperty('--link-hover', '#090909');
-  document.getElementById("settingsButton").src="img/settingsBlack.png";
-} else if (theme == "abyss") {
-  var r = document.querySelector(':root');
-  r.style.setProperty('--bg', '#000c18');
-  r.style.setProperty('--bg-2', '#000a14');
-  r.style.setProperty('--text-color', 'white');
-  r.style.setProperty('--link-color', 'lightgray');
-  r.style.setProperty('--link-hover', 'gray');
-  document.getElementById("settingsButton").src="img/settings.png";
-  document.getElementById("backgroundImage").style.display = "none";
-}
+let themeFunc = themeArr[theme];
+let themeObj = themeFunc();
+console.log(themeObj);
+let r = document.querySelector(':root');
+r.style.setProperty('--bg', themeObj.bg);
+r.style.setProperty('--bg-2', themeObj.bg2);
+r.style.setProperty('--text-color', themeObj.textCol);
+r.style.setProperty('--link-color', themeObj.linkCol);
+r.style.setProperty('--link-hover', themeObj.linkHov);
+document.getElementById("settingsButton").src=themeObj.settingSrc;
+document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
+document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
 
 document.getElementById("timetableInputHolder").appendChild(notice)
 document.getElementById("timetableInputHolder").style.display = "none";
@@ -550,6 +609,23 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       document.getElementById("backgroundImage").style.display = "block";
       document.getElementById("backgroundImage").style.opacity = "0.7";
       document.getElementById("settingsButton").src="img/settingsBlack.png";
+      return;
+    }
+    if (this.value == "rngesus take the wheel") {
+      alert("alrigth then");
+      localStorage.setItem("rngThemeUnlocked","yes");
+      localStorage.setItem("themeSetting","rngDark");
+      let themeObj = themeArr["rngDark"]();
+      console.log(themeObj);
+      let r = document.querySelector(':root');
+      r.style.setProperty('--bg', themeObj.bg);
+      r.style.setProperty('--bg-2', themeObj.bg2);
+      r.style.setProperty('--text-color', themeObj.textCol);
+      r.style.setProperty('--link-color', themeObj.linkCol);
+      r.style.setProperty('--link-hover', themeObj.linkHov);
+      document.getElementById("settingsButton").src=themeObj.settingSrc;
+      document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
+      document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
       return;
     }
     if (this.value.length > 0) {
