@@ -339,7 +339,7 @@ if (new Date().getHours() >= 16) {
 updateTime(); // immeditatelly runs the function, so that there is no lag
 setInterval(updateTime, 500);
 updateTimetable(); // immeditatelly runs the function, so that there is no lag
-//setInterval(updateTimetable, 500); // sus
+setInterval(updateTimetable, 500); // sus
 getWeatherData();
 setInterval(getWeatherData, 900000); // 15 minutes
 
