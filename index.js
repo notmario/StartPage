@@ -304,7 +304,7 @@ function updateTimetable(){
   var nextSub = new Subject("temp",0,0);
   var pickNextOne = false;
   for (subject of timetable[trueDate]) {
-    if (pickNextOne && nextSub.name != thisSub) {
+    if (pickNextOne && nextSub.name != thisSub.name) { //Aargh i am do sumb
       nextSub = subject;
       break;
     }
