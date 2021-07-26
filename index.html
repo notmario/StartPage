@@ -15,6 +15,7 @@
 
   <body>
     <img src="img/settings.png" id="settingsButton">
+    <img src="img/funMode.jpeg" id="backgroundImage" style="display: none;">
     <div id="main">
       <p class="small" id="weather"></p>
       <div id="timetable">
@@ -67,7 +68,10 @@
         <div id="timetableInputHolder">
           
         </div><br>
-        <span class="medium">Light mode: </span> <input type="checkbox" id="themeInput"><br>
+        <span class="medium">Theme: </span> <select name="themeInput" id="themeInput">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select><br>
         <span class="medium">Search engine: </span> <select name="searchEngine" id="searchEngine">
           <option value="Google">Google</option>
           <option value="DuckDuckGo">DuckDuckGo</option>

@@ -125,9 +125,18 @@ a:hover {
   padding: 0 1rem;
 }
 #searchBar {
-  width: 50rem;
+  width: 90vw;
   font-size: 2.5rem;
   background-color: transparent;
   border: none;
   color: var(--text-color);
+  text-align: center;
+}
+
+#backgroundImage {
+  opacity: .1;
+  position:absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -999;
 }

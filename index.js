@@ -392,18 +392,9 @@ for (weekID of ["A","B"]) {
 let notice = document.createElement("div")
 notice.innerText = "Reload page for changes to take effect"
 
-document.getElementById("themeInput").addEventListener("mouseup", function(){
-  let currentVal = getStorage("themeSetting","dark")
+document.getElementById("themeInput").addEventListener("change", function(){
+  let currentVal = this.value;
   if (currentVal == "dark") {
-    var r = document.querySelector(':root');
-    r.style.setProperty('--bg', '#e0e0e0');
-    r.style.setProperty('--bg-2', '#d8d8d8');
-    r.style.setProperty('--text-color', 'black');
-    r.style.setProperty('--link-color', '#181818');
-    r.style.setProperty('--link-hover', '#090909');
-    document.getElementById("settingsButton").src="img/settingsBlack.png";
-    localStorage.setItem("themeSetting","light");
-  } else {
     var r = document.querySelector(':root');
     r.style.setProperty('--bg', '#121212');
     r.style.setProperty('--bg-2', '#101010');
@@ -412,16 +403,71 @@ document.getElementById("themeInput").addEventListener("mouseup", function(){
     r.style.setProperty('--link-hover', 'gray');
     document.getElementById("settingsButton").src="img/settings.png";
     localStorage.setItem("themeSetting","dark");
+    document.getElementById("backgroundImage").style.display = "none";
+  } else if (currentVal == "funMode") {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#121212');
+    r.style.setProperty('--bg-2', '#101010');
+    r.style.setProperty('--text-color', 'white');
+    r.style.setProperty('--link-color', 'lightgray');
+    r.style.setProperty('--link-hover', 'gray');
+    document.getElementById("settingsButton").src="img/settings.png";
+    localStorage.setItem("themeSetting","funMode");
+    document.getElementById("backgroundImage").style.display = "block";
+    document.getElementById("backgroundImage").style.opacity = "0.2";
+  } else if (currentVal == "trueFunMode") {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#e0e0e0');
+    r.style.setProperty('--bg-2', '#d8d8d8');
+    r.style.setProperty('--text-color', 'black');
+    r.style.setProperty('--link-color', '#181818');
+    r.style.setProperty('--link-hover', '#090909');
+    document.getElementById("settingsButton").src="img/settingsBlack.png";
+    localStorage.setItem("themeSetting","trueFunMode");
+    document.getElementById("backgroundImage").style.display = "block";
+    document.getElementById("backgroundImage").style.opacity = "0.4";
+  } else {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#e0e0e0');
+    r.style.setProperty('--bg-2', '#d8d8d8');
+    r.style.setProperty('--text-color', 'black');
+    r.style.setProperty('--link-color', '#181818');
+    r.style.setProperty('--link-hover', '#090909');
+    document.getElementById("settingsButton").src="img/settingsBlack.png";
+    localStorage.setItem("themeSetting","light");
+    document.getElementById("backgroundImage").style.display = "none";
   }
 })
-document.getElementById("themeInput").checked = getStorage("themeSetting","dark") == "light";
-if (getStorage("themeSetting","dark") == "light") {
+if (getStorage("funModeUnlocked","no") == "yes") {
+  var x = document.getElementById("themeInput");
+  var option = document.createElement("option");
+  option.text = "Fun Mode";
+  option.value = "funMode";
+  x.add(option);
+}
+if (getStorage("themeSetting","dark") == "funMode") {
+  document.getElementById("backgroundImage").style.display = "block";
+}
+if (getStorage("trueFunModeUnlocked","no") == "yes") {
+  var x = document.getElementById("themeInput");
+  var option = document.createElement("option");
+  option.text = "True Fun Mode";
+  option.value = "trueFunMode";
+  x.add(option);
+}
+if (getStorage("themeSetting","dark") == "trueFunMode") {
+  document.getElementById("backgroundImage").style.display = "block";
+  document.getElementById("backgroundImage").style.opacity = "0.4";
+}
+document.getElementById("themeInput").value = getStorage("themeSetting","dark");
+if (getStorage("themeSetting","dark") == "light" || getStorage("themeSetting","dark") == "trueFunMode") {
   var r = document.querySelector(':root');
   r.style.setProperty('--bg', '#e0e0e0');
   r.style.setProperty('--bg-2', '#d8d8d8');
   r.style.setProperty('--text-color', 'black');
   r.style.setProperty('--link-color', '#181818');
   r.style.setProperty('--link-hover', '#090909');
+  document.getElementById("settingsButton").src="img/settingsBlack.png";
 }
 
 document.getElementById("timetableInputHolder").appendChild(notice)
@@ -445,6 +491,22 @@ document.getElementById("searchEngine").addEventListener("change", function(){
 
 document.getElementById("searchBar").addEventListener("keypress", function(e){
   if (e.code === "Enter") {
+    if (this.value == "fun mode") {
+      alert("fun mode activated");
+      localStorage.setItem("funModeUnlocked","yes");
+      localStorage.setItem("themeSetting","funMode");
+      document.getElementById("backgroundImage").style.display = "block";
+      return;
+    }
+    if (this.value == "true fun mode") {
+      alert("TRUE fun mode activated");
+      localStorage.setItem("trueFunModeUnlocked","yes");
+      localStorage.setItem("themeSetting","trueFunMode");
+      document.getElementById("backgroundImage").style.display = "block";
+      document.getElementById("backgroundImage").style.opacity = "0.4";
+      document.getElementById("settingsButton").src="img/settingsBlack.png";
+      return;
+    }
     if (this.value.length > 0) {
       q = {
         "Google": "https://google.com/search?q=" + this.value,
