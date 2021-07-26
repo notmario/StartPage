@@ -425,7 +425,7 @@ document.getElementById("themeInput").addEventListener("change", function(){
     document.getElementById("settingsButton").src="img/settingsBlack.png";
     localStorage.setItem("themeSetting","trueFunMode");
     document.getElementById("backgroundImage").style.display = "block";
-    document.getElementById("backgroundImage").style.opacity = "0.4";
+    document.getElementById("backgroundImage").style.opacity = "0.7";
   } else {
     var r = document.querySelector(':root');
     r.style.setProperty('--bg', '#e0e0e0');
@@ -457,7 +457,7 @@ if (getStorage("trueFunModeUnlocked","no") == "yes") {
 }
 if (getStorage("themeSetting","dark") == "trueFunMode") {
   document.getElementById("backgroundImage").style.display = "block";
-  document.getElementById("backgroundImage").style.opacity = "0.4";
+  document.getElementById("backgroundImage").style.opacity = "0.6";
 }
 document.getElementById("themeInput").value = getStorage("themeSetting","dark");
 if (getStorage("themeSetting","dark") == "light" || getStorage("themeSetting","dark") == "trueFunMode") {
@@ -496,6 +496,7 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       localStorage.setItem("funModeUnlocked","yes");
       localStorage.setItem("themeSetting","funMode");
       document.getElementById("backgroundImage").style.display = "block";
+      document.getElementById("backgroundImage").style.opacity = "0.2";
       return;
     }
     if (this.value == "true fun mode") {
@@ -503,7 +504,7 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       localStorage.setItem("trueFunModeUnlocked","yes");
       localStorage.setItem("themeSetting","trueFunMode");
       document.getElementById("backgroundImage").style.display = "block";
-      document.getElementById("backgroundImage").style.opacity = "0.4";
+      document.getElementById("backgroundImage").style.opacity = "0.6";
       document.getElementById("settingsButton").src="img/settingsBlack.png";
       return;
     }
