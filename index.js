@@ -426,6 +426,26 @@ document.getElementById("themeInput").addEventListener("change", function(){
     localStorage.setItem("themeSetting","trueFunMode");
     document.getElementById("backgroundImage").style.display = "block";
     document.getElementById("backgroundImage").style.opacity = "0.7";
+  } else if (currentVal == "abyss") {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#000c18');
+    r.style.setProperty('--bg-2', '#000a14');
+    r.style.setProperty('--text-color', 'white');
+    r.style.setProperty('--link-color', 'lightgray');
+    r.style.setProperty('--link-hover', 'gray');
+    document.getElementById("settingsButton").src="img/settings.png";
+    localStorage.setItem("themeSetting","abyss");
+    document.getElementById("backgroundImage").style.display = "none";
+  } else if (currentVal == "solLight") {
+    var r = document.querySelector(':root');
+    r.style.setProperty('--bg', '#FCF5E4');
+    r.style.setProperty('--bg-2', '#F2EBDA');
+    r.style.setProperty('--text-color', 'black');
+    r.style.setProperty('--link-color', '#181818');
+    r.style.setProperty('--link-hover', '#090909');
+    document.getElementById("settingsButton").src="img/settingsBlack.png";
+    localStorage.setItem("themeSetting","solLight");
+    document.getElementById("backgroundImage").style.display = "none";
   } else {
     var r = document.querySelector(':root');
     r.style.setProperty('--bg', '#e0e0e0');
@@ -455,12 +475,13 @@ if (getStorage("trueFunModeUnlocked","no") == "yes") {
   option.value = "trueFunMode";
   x.add(option);
 }
-if (getStorage("themeSetting","dark") == "trueFunMode") {
+let theme = getStorage("themeSetting","dark")
+if (theme == "trueFunMode") {
   document.getElementById("backgroundImage").style.display = "block";
-  document.getElementById("backgroundImage").style.opacity = "0.6";
+  document.getElementById("backgroundImage").style.opacity = "0.7";
 }
-document.getElementById("themeInput").value = getStorage("themeSetting","dark");
-if (getStorage("themeSetting","dark") == "light" || getStorage("themeSetting","dark") == "trueFunMode") {
+document.getElementById("themeInput").value = theme;
+if (theme == "light" || theme == "trueFunMode") {
   var r = document.querySelector(':root');
   r.style.setProperty('--bg', '#e0e0e0');
   r.style.setProperty('--bg-2', '#d8d8d8');
@@ -468,6 +489,15 @@ if (getStorage("themeSetting","dark") == "light" || getStorage("themeSetting","d
   r.style.setProperty('--link-color', '#181818');
   r.style.setProperty('--link-hover', '#090909');
   document.getElementById("settingsButton").src="img/settingsBlack.png";
+} else if (theme == "abyss") {
+  var r = document.querySelector(':root');
+  r.style.setProperty('--bg', '#000c18');
+  r.style.setProperty('--bg-2', '#000a14');
+  r.style.setProperty('--text-color', 'white');
+  r.style.setProperty('--link-color', 'lightgray');
+  r.style.setProperty('--link-hover', 'gray');
+  document.getElementById("settingsButton").src="img/settings.png";
+  document.getElementById("backgroundImage").style.display = "none";
 }
 
 document.getElementById("timetableInputHolder").appendChild(notice)
@@ -495,16 +525,30 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       alert("fun mode activated");
       localStorage.setItem("funModeUnlocked","yes");
       localStorage.setItem("themeSetting","funMode");
+      let r = document.querySelector(':root');
+      r.style.setProperty('--bg', '#121212');
+      r.style.setProperty('--bg-2', '#101010');
+      r.style.setProperty('--text-color', 'white');
+      r.style.setProperty('--link-color', 'lightgray');
+      r.style.setProperty('--link-hover', 'gray');
+      document.getElementById("settingsButton").src="img/settings.png";
       document.getElementById("backgroundImage").style.display = "block";
-      document.getElementById("backgroundImage").style.opacity = "0.2";
+      document.getElementById("backgroundImage").style.opacity = "0.1";
       return;
     }
     if (this.value == "true fun mode") {
       alert("TRUE fun mode activated");
       localStorage.setItem("trueFunModeUnlocked","yes");
       localStorage.setItem("themeSetting","trueFunMode");
+      let r = document.querySelector(':root');
+      r.style.setProperty('--bg', '#e0e0e0');
+      r.style.setProperty('--bg-2', '#d8d8d8');
+      r.style.setProperty('--text-color', 'black');
+      r.style.setProperty('--link-color', '#181818');
+      r.style.setProperty('--link-hover', '#090909');
+      document.getElementById("settingsButton").src="img/settingsBlack.png";
       document.getElementById("backgroundImage").style.display = "block";
-      document.getElementById("backgroundImage").style.opacity = "0.6";
+      document.getElementById("backgroundImage").style.opacity = "0.7";
       document.getElementById("settingsButton").src="img/settingsBlack.png";
       return;
     }

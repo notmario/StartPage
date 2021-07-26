@@ -5,10 +5,19 @@
   --text-color: white;
   --link-color: lightgray;
   --link-hover: gray;
+
+  --font-family: "Roboto";
+  /* --bg: rgb(0, 12, 24);
+  --bg-2: rgb(0, 10, 20); abyss
+
+
+  --bg: #FCF5E4;
+  --bg-2: #F2EBDA; solarized light 
+  for future reference */
 }
 
 * {
-  font-family: "Roboto";
+  font-family: var(--font-family), sans-serif;
   margin: 0px;
   padding: 0px;
   font-weight: 300;
@@ -132,6 +141,10 @@ a:hover {
   color: var(--text-color);
   text-align: center;
 }
+#searchBar::placeholder { /* Most modern browsers support this now. */
+  color: var(--link-color);
+}
+
 
 #backgroundImage {
   opacity: .1;
