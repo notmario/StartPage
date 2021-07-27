@@ -327,6 +327,10 @@ function updateTimetable(){
     document.getElementById("timeLeft").innerHTML = "now";
     return "shit";
   }
+  if (nextSub.name == "temp") {
+    document.getElementById("timetable").style.display = "none";
+    document.getElementById("timetableFull").style.display = "block";
+  }
   document.getElementById("upNextSubject").innerHTML = ((nextSub.finish-nextSub.start > 3600) ? "Double " : "") + nextSub.name;
   const timeLeft = nextSub.start-nowStamp;
   if (timeLeft < 600) {
@@ -401,110 +405,6 @@ for (weekID of ["A","B"]) {
 let notice = document.createElement("div")
 notice.innerText = "Reload page for changes to take effect"
 
-const themeArr = {
-  "dark": ()=>{return {
-    bg: "#121212",
-    bg2: "#101010",
-    textCol: "white",
-    linkCol: "lightgray",
-    linkHov: "gray",
-    settingSrc: "img/settings.png",
-    bgImg: {
-      display: "none",
-      opacity: "0"
-    }
-  }},
-  "light": ()=>{return {
-    bg: "#e0e0e0",
-    bg2: "#d8d8d8",
-    textCol: "black",
-    linkCol: "#181818",
-    linkHov: "#090909",
-    settingSrc: "img/settingsBlack.png",
-    bgImg: {
-      display: "none",
-      opacity: "0"
-    }
-  }},
-  "funMode": ()=>{return {
-    bg: "#121212",
-    bg2: "#101010",
-    textCol: "white",
-    linkCol: "lightgray",
-    linkHov: "gray",
-    settingSrc: "img/settings.png",
-    bgImg: {
-      display: "block",
-      opacity: "0.2",
-    }
-  }},
-  "trueFunMode": ()=>{return {
-    bg: "#e0e0e0",
-    bg2: "#d8d8d8",
-    textCol: "black",
-    linkCol: "#181818",
-    linkHov: "#090909",
-    settingSrc: "img/settingsBlack.png",
-    bgImg: {
-      display: "block",
-      opacity: "0.7",
-    }
-  }},
-  "abyss": ()=>{return {
-    bg: "#000c18",
-    bg2: "#000a14",
-    textCol: "white",
-    linkCol: "gray",
-    linkHov: "lightgray",
-    settingSrc: "img/settings.png",
-    bgImg: {
-      display: "none",
-      opacity: "0",
-    }
-  }},
-  "solLight": ()=>{return {
-    bg: "#FCF5E4",
-    bg2: "#F2EBDA",
-    textCol: "black",
-    linkCol: "#181818",
-    linkHov: "#090909",
-    settingSrc: "img/settingsBlack.png",
-    bgImg: {
-      display: "none",
-      opacity: "0",
-    }
-  }},
-  "rngDark": ()=>{
-    const hue = Math.floor(Math.random()*360)
-    return {
-    bg: hslToHex(hue,20,8),
-    bg2: hslToHex(hue,30,6),
-    textCol: "white",
-    linkCol: "lightgray",
-    linkHov: "gray",
-    settingSrc: "img/settings.png",
-    bgImg: {
-      display: "none",
-      opacity: "0",
-    }
-  }},
-  "rngLight": ()=>{
-    const hue = Math.floor(Math.random()*360)
-    return {
-    bg: hslToHex(hue,20,80),
-    bg2: hslToHex(hue,30,75),
-    textCol: "black",
-    linkCol: "#181818",
-    linkHov: "#090909",
-    settingSrc: "img/settingsBlack.png",
-    bgImg: {
-      display: "none",
-      opacity: "0",
-    }
-  }}
-}
-
-
 document.getElementById("themeInput").addEventListener("change", function(){
   let currentVal = this.value;
   localStorage.setItem("themeSetting",this.value);
@@ -515,34 +415,45 @@ document.getElementById("themeInput").addEventListener("change", function(){
   r.style.setProperty('--text-color', theme.textCol);
   r.style.setProperty('--link-color', theme.linkCol);
   r.style.setProperty('--link-hover', theme.linkHov);
+  r.style.setProperty('--font-family', theme.font);
   document.getElementById("settingsButton").src=theme.settingSrc;
   document.getElementById("backgroundImage").style.display = theme.bgImg.display;
   document.getElementById("backgroundImage").style.opacity = theme.bgImg.opacity;
+  document.getElementById("backgroundImage").src = theme.bgImg.src;
 })
+
+function addThemeToMoreThemes(val,name) {
+  let option = document.createElement("option");
+  option.text = name;
+  option.value = val;
+  moreGroup.appendChild(option);
+}
+var darkGroup = document.getElementById("darkThemeInput")
+var lightGroup = document.getElementById("lightThemeInput")
+var moreGroup = document.getElementById("moreThemeInput")
 if (getStorage("funModeUnlocked","no") == "yes") {
-  var x = document.getElementById("themeInput");
-  var option = document.createElement("option");
-  option.text = "Fun Mode";
-  option.value = "funMode";
-  x.add(option);
+  document.getElementById("moreThemeInput").style.display = "block";
+  addThemeToMoreThemes("funMode","Fun Mode")
 }
 if (getStorage("trueFunModeUnlocked","no") == "yes") {
-  var x = document.getElementById("themeInput");
-  var option = document.createElement("option");
-  option.text = "True Fun Mode";
-  option.value = "trueFunMode";
-  x.add(option);
+  document.getElementById("moreThemeInput").style.display = "block";
+  addThemeToMoreThemes("trueFunMode","True Fun Mode")
 }
 if (getStorage("rngThemeUnlocked","no") == "yes") {
-  var x = document.getElementById("themeInput");
-  var option = document.createElement("option");
-  option.text = "RNG Dark";
-  option.value = "rngDark";
-  x.add(option);
-  var option2 = document.createElement("option");
-  option2.text = "RNG Light";
-  option2.value = "rngLight";
-  x.add(option2);
+  document.getElementById("moreThemeInput").style.display = "block";
+  addThemeToMoreThemes("rngDark","RNG Dark")
+  addThemeToMoreThemes("rngLight","RNG Light")
+}
+
+if (getStorage("moreThemesUnlocked","no") == "yes") {
+  document.getElementById("moreThemeInput").style.display = "block";
+  addThemeToMoreThemes("graphicDesign","Graphic Design is my passion")
+  addThemeToMoreThemes("shrek","Shrek")
+  addThemeToMoreThemes("shrekDark","Shrek Dark")
+  addThemeToMoreThemes("neon","Neon")
+  addThemeToMoreThemes("red","Red")
+  addThemeToMoreThemes("funModePlus","Fun Mode++")
+  addThemeToMoreThemes("literallyNightMode","Literally Night Mode")
 }
 let theme = getStorage("themeSetting","dark")
 document.getElementById("themeInput").value = theme;
@@ -555,9 +466,11 @@ r.style.setProperty('--bg-2', themeObj.bg2);
 r.style.setProperty('--text-color', themeObj.textCol);
 r.style.setProperty('--link-color', themeObj.linkCol);
 r.style.setProperty('--link-hover', themeObj.linkHov);
+r.style.setProperty('--font-family', themeObj.font);
 document.getElementById("settingsButton").src=themeObj.settingSrc;
 document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
 document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
+document.getElementById("backgroundImage").src = themeObj.bgImg.src;
 
 document.getElementById("timetableInputHolder").appendChild(notice)
 document.getElementById("timetableInputHolder").style.display = "none";
@@ -593,6 +506,7 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       document.getElementById("settingsButton").src="img/settings.png";
       document.getElementById("backgroundImage").style.display = "block";
       document.getElementById("backgroundImage").style.opacity = "0.1";
+      document.getElementById("backgroundImage").src = "img/funMode.jpeg";
       return;
     }
     if (this.value == "true fun mode") {
@@ -608,7 +522,7 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       document.getElementById("settingsButton").src="img/settingsBlack.png";
       document.getElementById("backgroundImage").style.display = "block";
       document.getElementById("backgroundImage").style.opacity = "0.7";
-      document.getElementById("settingsButton").src="img/settingsBlack.png";
+      document.getElementById("backgroundImage").src = "img/funMode.jpeg";
       return;
     }
     if (this.value == "rngesus take the wheel") {
@@ -626,6 +540,12 @@ document.getElementById("searchBar").addEventListener("keypress", function(e){
       document.getElementById("settingsButton").src=themeObj.settingSrc;
       document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
       document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
+      document.getElementById("backgroundImage").src = themeObj.bgImg.src;
+      return;
+    }
+    if (this.value == "i want more themes") {
+      alert("refresh the page");
+      localStorage.setItem("moreThemesUnlocked","yes");
       return;
     }
     if (this.value.length > 0) {

@@ -7,7 +7,8 @@
 
   <title>New Tab</title>
 
-  <script src="index.js" defer></script>
+  <script src="js/theme.js"></script>
+  <script src="js/index.js" defer></script>
 
   <style>
     @import url(style.css);
@@ -69,10 +70,17 @@
           
         </div><br>
         <span class="medium">Theme: </span> <select name="themeInput" id="themeInput">
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-          <option value="abyss">Abyss</option>
-          <option value="solLight">Solarized Light</option>
+          <optgroup label="Dark Themes" id="darkThemeInput">
+            <option value="dark">Dark</option>
+            <option value="abyss">Abyss</option>
+            <option value="purple">Purple</option>
+          </optgroup>
+          <optgroup label="Light Themes" id="lightThemeInput">
+            <option value="light">Light</option>
+            <option value="solLight">Solarized Light</option>
+          </optgroup>
+          <optgroup style="display:none;" label="More Themes" id="moreThemeInput">
+          </optgroup>
         </select><br>
         <span class="medium">Search engine: </span> <select name="searchEngine" id="searchEngine">
           <option value="Google">Google</option>
