@@ -8,10 +8,26 @@ Date.prototype.getWeek = function() {
   return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
 } 
 // lmao
-
+var CHANGELINKS = true; //gets set to false immediate lol
 function getStorage(item,unset){
   return localStorage.getItem(item) ?? unset;
 }
+
+function loadTheme(themeName) {
+  let theme = themeArr[themeName]();
+  let r = document.querySelector(':root');
+  r.style.setProperty('--bg', theme.bg);
+  r.style.setProperty('--bg-2', theme.bg2);
+  r.style.setProperty('--text-color', theme.textCol);
+  r.style.setProperty('--link-color', theme.linkCol);
+  r.style.setProperty('--link-hover', theme.linkHov);
+  r.style.setProperty('--font-family', theme.font);
+  document.getElementById("settingsButton").src=theme.settingSrc;
+  document.getElementById("backgroundImage").style.display = theme.bgImg.display;
+  document.getElementById("backgroundImage").style.opacity = theme.bgImg.opacity;
+  document.getElementById("backgroundImage").src = theme.bgImg.src;
+}
+
 
 function hslToHex(h, s, l) {
   l /= 100;
@@ -84,18 +100,67 @@ function updateTime() {
   minutes = minutes >= 10 ? minutes : "0" + minutes;
   seconds = seconds >= 10 ? seconds : "0" + seconds;
   var d_str = dayText + ", " + dateText + " " + monthText;
-  var t_str = hours + ":" + minutes; // + ":" + seconds;
+  var t_str = (hours + ":" + minutes) + ((getStorage("seconds","no") == "yes") ? (":" + seconds) : "");
   //var messageArray = messageNormal;
-  //if (hours >= 23 || hours <= 2) messageArray = messageNight;
-  if (hours >= 8 && hours < 16 && day >= 1 && day <= 5) {
-    //messageArray = messageSchool;
-    document.getElementById("mediaLinks").style.display = "none";
-    document.getElementById("codingLinks").style.display = "none";
-    document.getElementById("schoolLinks").innerHTML = document
-      .getElementById("schoolLinks")
-      .innerHTML.split("<br>")
-      .join("&nbsp;".repeat(8));
-    document.getElementById("schoolLinks").classList.add("funny");
+  if (CHANGELINKS) {
+    CHANGELINKS = false;
+    linkslol = {
+      "discord": "https://discord.com/",
+      "youtube": "https://youtube.com/",
+      "reddit": "https://reddit.com/",
+      "connect": "https://connect.det.wa.edu.au/",
+      "outlook": "https://outlook.office.com/mail/inbox/",
+      "github": "https://github.com/",
+      "stackoverflow": "https://https://stackoverflow.com//",
+    };
+    let mediaLinks = [];
+    (getStorage("showDiscord","no") == "yes") ? mediaLinks.push("discord") : "";
+    (getStorage("showYoutube","yes") == "yes") ? mediaLinks.push("youtube") : "";
+    (getStorage("showReddit","no") == "yes") ? mediaLinks.push("reddit") : "";
+    let schoolLinks = [];
+    (getStorage("showConnect","yes") == "yes") ? schoolLinks.push("connect") : "";
+    (getStorage("showOutlook","yes") == "yes") ? schoolLinks.push("outlook") : "";
+    let codingLinks = [];
+    (getStorage("showGithub","no") == "yes") ? codingLinks.push("github") : "";
+    (getStorage("showStackoverflow","no") == "yes") ? codingLinks.push("stackoverflow") : "";
+    document.getElementById("mediaLinks").style.display = (mediaLinks.length == 0) ? "none" : "block";
+    document.getElementById("mediaLinks").innerHTML = "<h2>media</h2>";
+    document.getElementById("schoolLinks").style.display = (schoolLinks.length == 0) ? "none" : "block";
+    document.getElementById("schoolLinks").innerHTML = "<h2>school</h2>";
+    document.getElementById("codingLinks").style.display = (codingLinks.length == 0) ? "none" : "block";
+    document.getElementById("codingLinks").innerHTML = "<h2>coding</h2>";
+    for (link of mediaLinks) {
+      let linkElem = document.createElement("a");
+      linkElem.innerHTML = link;
+      linkElem.href = linkslol[link];
+      document.getElementById("mediaLinks").append(linkElem);
+      document.getElementById("mediaLinks").innerHTML += "<br>";
+    }
+    for (link of schoolLinks) {
+      let linkElem = document.createElement("a");
+      linkElem.innerHTML = link;
+      linkElem.href = linkslol[link];
+      document.getElementById("schoolLinks").append(linkElem);
+      document.getElementById("schoolLinks").innerHTML += "<br>";
+    }
+    for (link of codingLinks) {
+      let linkElem = document.createElement("a");
+      linkElem.innerHTML = link;
+      linkElem.href = linkslol[link];
+      document.getElementById("codingLinks").append(linkElem);
+      document.getElementById("codingLinks").innerHTML += "<br>";
+    }
+    //if (hours >= 23 || hours <= 2) messageArray = messageNight;
+    /* if (hours >= 8 && hours < 16 && day >= 1 && day <= 5) {
+      //messageArray = messageSchool;
+      document.getElementById("mediaLinks").style.display = "none";
+      document.getElementById("codingLinks").style.display = "none";
+      document.getElementById("schoolLinks").innerHTML = document
+        .getElementById("schoolLinks")
+        .innerHTML.split("<br>")
+        .join("&nbsp;".repeat(8));
+      document.getElementById("schoolLinks").classList.add("funny");
+    } */ //lol lmao
   }
   document.getElementById("time").innerText = t_str;
   document.getElementById("date").innerText = d_str;
@@ -333,10 +398,8 @@ function updateTimetable(){
   }
   document.getElementById("upNextSubject").innerHTML = ((nextSub.finish-nextSub.start > 3600) ? "Double " : "") + nextSub.name;
   const timeLeft = nextSub.start-nowStamp;
-  if (timeLeft < 600) {
+  if (timeLeft < 3600) {
     document.getElementById("timeLeft").innerHTML = `in ${Math.floor(timeLeft/60)}m ${timeLeft%60}s`;
-  } else if (timeLeft < 3600) {
-    document.getElementById("timeLeft").innerHTML = `in ${Math.floor(timeLeft/60)}m`;
   } else {
     document.getElementById("timeLeft").innerHTML = `in ${Math.floor(timeLeft/3600)}h ${Math.floor(timeLeft/60)%60}m`;
   }
@@ -350,9 +413,9 @@ if (new Date().getHours() >= 16) {
 
 }
 updateTime(); // immeditatelly runs the function, so that there is no lag
-setInterval(updateTime, 500);
+setInterval(updateTime, 250);
 updateTimetable(); // immeditatelly runs the function, so that there is no lag
-setInterval(updateTimetable, 500); // sus
+setInterval(updateTimetable, 250); // sus
 getWeatherData();
 setInterval(getWeatherData, 900000); // 15 minutes
 
@@ -373,7 +436,7 @@ document.getElementById("settingsButton").addEventListener("click",function(){
 for (weekID of ["A","B"]) {
   for (day in ["Monday","Tuesday","Wednesday","Thursday","Friday"]) {
     let dayTitle = document.createElement("div");
-    dayTitle.classList.add("medium")
+    dayTitle.classList.add("theperfectsize")
     dayTitle.innerHTML = `${["Monday","Tuesday","Wednesday","Thursday","Friday"][day]} ${weekID}`;
     document.getElementById("timetableInputHolder").appendChild(dayTitle)
     let theflexbox = document.createElement("div");
@@ -406,20 +469,8 @@ let notice = document.createElement("div")
 notice.innerText = "Reload page for changes to take effect"
 
 document.getElementById("themeInput").addEventListener("change", function(){
-  let currentVal = this.value;
   localStorage.setItem("themeSetting",this.value);
-  let theme = themeArr[this.value]();
-  let r = document.querySelector(':root');
-  r.style.setProperty('--bg', theme.bg);
-  r.style.setProperty('--bg-2', theme.bg2);
-  r.style.setProperty('--text-color', theme.textCol);
-  r.style.setProperty('--link-color', theme.linkCol);
-  r.style.setProperty('--link-hover', theme.linkHov);
-  r.style.setProperty('--font-family', theme.font);
-  document.getElementById("settingsButton").src=theme.settingSrc;
-  document.getElementById("backgroundImage").style.display = theme.bgImg.display;
-  document.getElementById("backgroundImage").style.opacity = theme.bgImg.opacity;
-  document.getElementById("backgroundImage").src = theme.bgImg.src;
+  loadTheme(this.value);
 })
 
 function addThemeToMoreThemes(val,name) {
@@ -457,20 +508,7 @@ if (getStorage("moreThemesUnlocked","no") == "yes") {
 }
 let theme = getStorage("themeSetting","dark")
 document.getElementById("themeInput").value = theme;
-let themeFunc = themeArr[theme];
-let themeObj = themeFunc();
-console.log(themeObj);
-let r = document.querySelector(':root');
-r.style.setProperty('--bg', themeObj.bg);
-r.style.setProperty('--bg-2', themeObj.bg2);
-r.style.setProperty('--text-color', themeObj.textCol);
-r.style.setProperty('--link-color', themeObj.linkCol);
-r.style.setProperty('--link-hover', themeObj.linkHov);
-r.style.setProperty('--font-family', themeObj.font);
-document.getElementById("settingsButton").src=themeObj.settingSrc;
-document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
-document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
-document.getElementById("backgroundImage").src = themeObj.bgImg.src;
+loadTheme(theme);
 
 document.getElementById("timetableInputHolder").appendChild(notice)
 document.getElementById("timetableInputHolder").style.display = "none";
@@ -491,56 +529,82 @@ document.getElementById("searchEngine").addEventListener("change", function(){
   localStorage.setItem("searchEngine",this.value)
 })
 
+document.getElementById("showSeconds").checked = (getStorage("seconds","no") == "yes")
+document.getElementById("showSeconds").addEventListener("click", function(){
+  document.getElementById("showSeconds").checked = (getStorage("seconds","no") == "no")
+  localStorage.setItem("seconds",(getStorage("seconds","no") == "no") ? "yes" : "no")
+})
+
+document.getElementById("showYoutube").checked = (getStorage("showYoutube","yes") == "yes")
+document.getElementById("showYoutube").addEventListener("click", function(){
+  document.getElementById("showYoutube").checked = (getStorage("showYoutube","yes") == "no")
+  localStorage.setItem("showYoutube",(getStorage("showYoutube","yes") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showDiscord").checked = (getStorage("showDiscord","no") == "yes")
+document.getElementById("showDiscord").addEventListener("click", function(){
+  document.getElementById("showDiscord").checked = (getStorage("showDiscord","no") == "no")
+  localStorage.setItem("showDiscord",(getStorage("showDiscord","no") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showReddit").checked = (getStorage("showReddit","no") == "yes")
+document.getElementById("showReddit").addEventListener("click", function(){
+  document.getElementById("showReddit").checked = (getStorage("showReddit","no") == "no")
+  localStorage.setItem("showReddit",(getStorage("showReddit","no") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showConnect").checked = (getStorage("showConnect","yes") == "yes")
+document.getElementById("showConnect").addEventListener("click", function(){
+  document.getElementById("showConnect").checked = (getStorage("showConnect","yes") == "no")
+  localStorage.setItem("showConnect",(getStorage("showConnect","yes") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showOutlook").checked = (getStorage("showOutlook","yes") == "yes")
+document.getElementById("showOutlook").addEventListener("click", function(){
+  document.getElementById("showOutlook").checked = (getStorage("showOutlook","yes") == "no")
+  localStorage.setItem("showOutlook",(getStorage("showOutlook","yes") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showGithub").checked = (getStorage("showGithub","no") == "yes")
+document.getElementById("showGithub").addEventListener("click", function(){
+  document.getElementById("showGithub").checked = (getStorage("showGithub","no") == "no")
+  localStorage.setItem("showGithub",(getStorage("showGithub","no") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showStackoverflow").checked = (getStorage("showStackoverflow","no") == "yes")
+document.getElementById("showStackoverflow").addEventListener("click", function(){
+  document.getElementById("showStackoverflow").checked = (getStorage("showStackoverflow","no") == "no")
+  localStorage.setItem("showStackoverflow",(getStorage("showStackoverflow","no") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
 document.getElementById("searchBar").addEventListener("keypress", function(e){
   if (e.code === "Enter") {
     if (this.value == "fun mode") {
       alert("fun mode activated");
       localStorage.setItem("funModeUnlocked","yes");
       localStorage.setItem("themeSetting","funMode");
-      let r = document.querySelector(':root');
-      r.style.setProperty('--bg', '#121212');
-      r.style.setProperty('--bg-2', '#101010');
-      r.style.setProperty('--text-color', 'white');
-      r.style.setProperty('--link-color', 'lightgray');
-      r.style.setProperty('--link-hover', 'gray');
-      document.getElementById("settingsButton").src="img/settings.png";
-      document.getElementById("backgroundImage").style.display = "block";
-      document.getElementById("backgroundImage").style.opacity = "0.1";
-      document.getElementById("backgroundImage").src = "img/funMode.jpeg";
+      loadTheme("funMode");
       return;
     }
     if (this.value == "true fun mode") {
       alert("TRUE fun mode activated");
       localStorage.setItem("trueFunModeUnlocked","yes");
       localStorage.setItem("themeSetting","trueFunMode");
-      let r = document.querySelector(':root');
-      r.style.setProperty('--bg', '#e0e0e0');
-      r.style.setProperty('--bg-2', '#d8d8d8');
-      r.style.setProperty('--text-color', 'black');
-      r.style.setProperty('--link-color', '#181818');
-      r.style.setProperty('--link-hover', '#090909');
-      document.getElementById("settingsButton").src="img/settingsBlack.png";
-      document.getElementById("backgroundImage").style.display = "block";
-      document.getElementById("backgroundImage").style.opacity = "0.7";
-      document.getElementById("backgroundImage").src = "img/funMode.jpeg";
+      loadTheme("trueFunMode");
       return;
     }
     if (this.value == "rngesus take the wheel") {
       alert("alrigth then");
       localStorage.setItem("rngThemeUnlocked","yes");
       localStorage.setItem("themeSetting","rngDark");
-      let themeObj = themeArr["rngDark"]();
-      console.log(themeObj);
-      let r = document.querySelector(':root');
-      r.style.setProperty('--bg', themeObj.bg);
-      r.style.setProperty('--bg-2', themeObj.bg2);
-      r.style.setProperty('--text-color', themeObj.textCol);
-      r.style.setProperty('--link-color', themeObj.linkCol);
-      r.style.setProperty('--link-hover', themeObj.linkHov);
-      document.getElementById("settingsButton").src=themeObj.settingSrc;
-      document.getElementById("backgroundImage").style.display = themeObj.bgImg.display;
-      document.getElementById("backgroundImage").style.opacity = themeObj.bgImg.opacity;
-      document.getElementById("backgroundImage").src = themeObj.bgImg.src;
+      loadTheme("rngDark");
       return;
     }
     if (this.value == "i want more themes") {

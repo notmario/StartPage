@@ -58,10 +58,18 @@ body {
 .bigbutnottoobig {
   font-size: 2.25rem;
 }
+.justbigenough {
+  font-size: 1.8rem;
+}
 .medium {
   font-size: 1.5rem;
 }
-
+.theperfectsize {
+  font-size: 1.3rem;
+}
+.funny {
+  font-size: 1.15rem;
+}
 .small {
   font-size: 1rem;
 }
@@ -70,9 +78,6 @@ body {
   font-size: 0.75rem;
 }
 
-.funny {
-  font-size: 1.15rem;
-}
 
 #linksContainer {
   display: flex;
