@@ -59,8 +59,8 @@ const themeArr = {
     bg: "#000b15",
     bg2: "#000a14",
     textCol: "white",
-    linkCol: "gray",
-    linkHov: "lightgray",
+    linkCol: "lightgray",
+    linkHov: "gray",
     settingSrc: "img/settings.png",
     bgImg: {
       display: "none",
