@@ -120,6 +120,8 @@ function updateTime() {
     let schoolLinks = [];
     (getStorage("showConnect","yes") == "yes") ? schoolLinks.push("connect") : "";
     (getStorage("showOutlook","yes") == "yes") ? schoolLinks.push("outlook") : "";
+    (getStorage("showMathspace","no") == "yes") ? schoolLinks.push("mathspace") : "";
+    (getStorage("showEP","no") == "yes") ? schoolLinks.push("e.p.") : "";
     let codingLinks = [];
     (getStorage("showGithub","no") == "yes") ? codingLinks.push("github") : "";
     (getStorage("showStackoverflow","no") == "yes") ? codingLinks.push("stackoverflow") : "";
@@ -505,6 +507,7 @@ if (getStorage("moreThemesUnlocked","no") == "yes") {
   addThemeToMoreThemes("red","Red")
   addThemeToMoreThemes("funModePlus","Fun Mode++")
   addThemeToMoreThemes("literallyNightMode","Literally Night Mode")
+  addThemeToMoreThemes("sussyBaka","When the theme is sus 😳")
 }
 let theme = getStorage("themeSetting","dark")
 document.getElementById("themeInput").value = theme;
@@ -567,6 +570,20 @@ document.getElementById("showOutlook").checked = (getStorage("showOutlook","yes"
 document.getElementById("showOutlook").addEventListener("click", function(){
   document.getElementById("showOutlook").checked = (getStorage("showOutlook","yes") == "no")
   localStorage.setItem("showOutlook",(getStorage("showOutlook","yes") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showMathspace").checked = (getStorage("showMathspace","no") == "yes")
+document.getElementById("showMathspace").addEventListener("click", function(){
+  document.getElementById("showMathspace").checked = (getStorage("showMathspace","no") == "no")
+  localStorage.setItem("showMathspace",(getStorage("showMathspace","no") == "no") ? "yes" : "no")
+  CHANGELINKS = true;
+})
+
+document.getElementById("showEP").checked = (getStorage("showEP","no") == "yes")
+document.getElementById("showEP").addEventListener("click", function(){
+  document.getElementById("showEP").checked = (getStorage("showEP","no") == "no")
+  localStorage.setItem("showEP",(getStorage("showEP","no") == "no") ? "yes" : "no")
   CHANGELINKS = true;
 })
 

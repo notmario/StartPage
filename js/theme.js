@@ -227,4 +227,18 @@ const themeArr = {
     },
     font: "Roboto"
   }},
+  "sussyBaka": ()=>{return {
+    bg: "#000000",
+    bg2: "#020202",
+    textCol: "white",
+    linkCol: "white",
+    linkHov: "white",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "block",
+      src: "img/sussy.jpeg",
+      opacity: "0.2"
+    },
+    font: "Roboto"
+  }},
 }
