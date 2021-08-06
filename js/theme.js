@@ -69,6 +69,20 @@ const themeArr = {
     },
     font: "Roboto"
   }},
+  "solDark": ()=>{return {
+    bg: "#001518",
+    bg2: "#001316",
+    textCol: "white",
+    linkCol: "lightgray",
+    linkHov: "gray",
+    settingSrc: "img/settings.png",
+    bgImg: {
+      display: "none",
+      src: "",
+      opacity: "0"
+    },
+    font: "Roboto"
+  }},
   "solLight": ()=>{return {
     bg: "#FCF5E4",
     bg2: "#F2EBDA",
@@ -231,8 +245,8 @@ const themeArr = {
     bg: "#000000",
     bg2: "#020202",
     textCol: "white",
-    linkCol: "white",
-    linkHov: "white",
+    linkCol: "lightgray",
+    linkHov: "gray",
     settingSrc: "img/settings.png",
     bgImg: {
       display: "block",

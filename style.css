@@ -147,7 +147,7 @@ a:hover {
   text-align: center;
 }
 #searchBar::placeholder { /* Most modern browsers support this now. */
-  color: var(--link-color);
+  color: var(--link-hover);
 }
 
 
@@ -158,3 +158,6 @@ a:hover {
   height: 100vh;
   z-index: -999;
 }
+input:focus,textarea:focus{
+  outline: none;
+ }
