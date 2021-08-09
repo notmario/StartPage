@@ -119,6 +119,8 @@ function updateTime() {
       outlook: "https://outlook.office.com/mail/inbox/",
       github: "https://github.com/",
       stackoverflow: "https://https://stackoverflow.com//",
+      mathspace: "https://mathspace.co/student",
+      "e.p.": "https://www.educationperfect.com/app/#/",
     };
     let mediaLinks = [];
     getStorage("showDiscord", "no") == "yes" ? mediaLinks.push("discord") : "";
