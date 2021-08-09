@@ -117,10 +117,12 @@ function updateTime() {
       reddit: "https://reddit.com/",
       connect: "https://connect.det.wa.edu.au/",
       outlook: "https://outlook.office.com/mail/inbox/",
+      onedrive: "https://onedrive.live.com/about/en-au/signin/",
       github: "https://github.com/",
       stackoverflow: "https://https://stackoverflow.com//",
       mathspace: "https://mathspace.co/student",
       "e.p.": "https://www.educationperfect.com/app/#/",
+      stile: "http://stileapp.com/login",
     };
     let mediaLinks = [];
     getStorage("showDiscord", "no") == "yes" ? mediaLinks.push("discord") : "";
@@ -133,10 +135,15 @@ function updateTime() {
     getStorage("showOutlook", "yes") == "yes"
       ? schoolLinks.push("outlook")
       : "";
-    getStorage("showMathspace", "no") == "yes"
-      ? schoolLinks.push("mathspace")
+    getStorage("showOnedrive", "no") == "yes"
+      ? schoolLinks.push("onedrive")
       : "";
-    getStorage("showEP", "no") == "yes" ? schoolLinks.push("e.p.") : "";
+    let subjectLinks = [];
+    getStorage("showMathspace", "no") == "yes"
+      ? subjectLinks.push("mathspace")
+      : "";
+    getStorage("showEP", "no") == "yes" ? subjectLinks.push("e.p.") : "";
+    getStorage("showStile", "no") == "yes" ? subjectLinks.push("stile") : "";
     let codingLinks = [];
     getStorage("showGithub", "no") == "yes" ? codingLinks.push("github") : "";
     getStorage("showStackoverflow", "no") == "yes"
@@ -148,6 +155,9 @@ function updateTime() {
     document.getElementById("schoolLinks").style.display =
       schoolLinks.length == 0 ? "none" : "block";
     document.getElementById("schoolLinks").innerHTML = "<h2>school</h2>";
+    document.getElementById("subjectLinks").style.display =
+    subjectLinks.length == 0 ? "none" : "block";
+    document.getElementById("subjectLinks").innerHTML = "<h2>subjects</h2>";
     document.getElementById("codingLinks").style.display =
       codingLinks.length == 0 ? "none" : "block";
     document.getElementById("codingLinks").innerHTML = "<h2>coding</h2>";
@@ -164,6 +174,13 @@ function updateTime() {
       linkElem.href = linkslol[link];
       document.getElementById("schoolLinks").append(linkElem);
       document.getElementById("schoolLinks").innerHTML += "<br>";
+    }
+    for (link of subjectLinks) {
+      let linkElem = document.createElement("a");
+      linkElem.innerHTML = link;
+      linkElem.href = linkslol[link];
+      document.getElementById("subjectLinks").append(linkElem);
+      document.getElementById("subjectLinks").innerHTML += "<br>";
     }
     for (link of codingLinks) {
       let linkElem = document.createElement("a");
@@ -1038,6 +1055,18 @@ document.getElementById("showOutlook").addEventListener("click", function () {
   CHANGELINKS = true;
 });
 
+document.getElementById("showOnedrive").checked =
+  getStorage("showOnedrive", "no") == "yes";
+document.getElementById("showOnedrive").addEventListener("click", function () {
+  document.getElementById("showOnedrive").checked =
+    getStorage("showOnedrive", "no") == "no";
+  localStorage.setItem(
+    "showOnedrive",
+    getStorage("showOnedrive", "no") == "no" ? "yes" : "no"
+  );
+  CHANGELINKS = true;
+});
+
 document.getElementById("showMathspace").checked =
   getStorage("showMathspace", "no") == "yes";
 document.getElementById("showMathspace").addEventListener("click", function () {
@@ -1057,6 +1086,18 @@ document.getElementById("showEP").addEventListener("click", function () {
   localStorage.setItem(
     "showEP",
     getStorage("showEP", "no") == "no" ? "yes" : "no"
+  );
+  CHANGELINKS = true;
+});
+
+document.getElementById("showStile").checked =
+  getStorage("showStile", "no") == "yes";
+document.getElementById("showStile").addEventListener("click", function () {
+  document.getElementById("showStile").checked =
+    getStorage("showStile", "no") == "no";
+  localStorage.setItem(
+    "showStile",
+    getStorage("showStile", "no") == "no" ? "yes" : "no"
   );
   CHANGELINKS = true;
 });
