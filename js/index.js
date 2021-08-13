@@ -99,7 +99,17 @@ function updateTime() {
   // convert date to text
 
   // console.log(d_str);
-
+  let amPm = "";
+  if (getStorage("24hmode","yes") == "no") {
+    if (hours >= 12) {
+      amPm = '<span class="bitdefender"> pm</span>'
+    } else {
+      amPm = '<span class="bitdefender"> am</span>'
+    }
+    hours %= 12
+    if (hours == 0) hours+=12
+  }
+  hours = hours >= 10 ? hours : "0" + hours;
   minutes = minutes >= 10 ? minutes : "0" + minutes;
   seconds = seconds >= 10 ? seconds : "0" + seconds;
   var d_str = dayText + ", " + dateText + " " + monthText;
@@ -107,7 +117,8 @@ function updateTime() {
     hours +
     ":" +
     minutes +
-    (getStorage("seconds", "no") == "yes" ? ":" + seconds : "");
+    (getStorage("seconds", "no") == "yes" ? ":" + seconds : "") +
+    amPm;
   //var messageArray = messageNormal;
   if (CHANGELINKS) {
     CHANGELINKS = false;
@@ -201,8 +212,8 @@ function updateTime() {
       document.getElementById("schoolLinks").classList.add("funny");
     } */ //lol lmao
   }
-  document.getElementById("time").innerText = t_str;
-  document.getElementById("date").innerText = d_str;
+  document.getElementById("time").innerHTML = t_str;
+  document.getElementById("date").innerHTML = d_str;
   //document.getElementById("funnymessage").innerText = messageArray[messageID];
 }
 function Subject(name, start, finish) {
@@ -983,150 +994,44 @@ document.getElementById("searchEngine").addEventListener("change", function () {
   ).placeholder = `Search with ${this.value}`;
   localStorage.setItem("searchEngine", this.value);
 });
-
-document.getElementById("showSeconds").checked =
-  getStorage("seconds", "no") == "yes";
-document.getElementById("showSeconds").addEventListener("click", function () {
-  document.getElementById("showSeconds").checked =
-    getStorage("seconds", "no") == "no";
-  localStorage.setItem(
-    "seconds",
-    getStorage("seconds", "no") == "no" ? "yes" : "no"
-  );
-});
-
-document.getElementById("showYoutube").checked =
-  getStorage("showYoutube", "yes") == "yes";
-document.getElementById("showYoutube").addEventListener("click", function () {
-  document.getElementById("showYoutube").checked =
-    getStorage("showYoutube", "yes") == "no";
-  localStorage.setItem(
-    "showYoutube",
-    getStorage("showYoutube", "yes") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showDiscord").checked =
-  getStorage("showDiscord", "no") == "yes";
-document.getElementById("showDiscord").addEventListener("click", function () {
-  document.getElementById("showDiscord").checked =
-    getStorage("showDiscord", "no") == "no";
-  localStorage.setItem(
-    "showDiscord",
-    getStorage("showDiscord", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showReddit").checked =
-  getStorage("showReddit", "no") == "yes";
-document.getElementById("showReddit").addEventListener("click", function () {
-  document.getElementById("showReddit").checked =
-    getStorage("showReddit", "no") == "no";
-  localStorage.setItem(
-    "showReddit",
-    getStorage("showReddit", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showConnect").checked =
-  getStorage("showConnect", "yes") == "yes";
-document.getElementById("showConnect").addEventListener("click", function () {
-  document.getElementById("showConnect").checked =
-    getStorage("showConnect", "yes") == "no";
-  localStorage.setItem(
-    "showConnect",
-    getStorage("showConnect", "yes") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showOutlook").checked =
-  getStorage("showOutlook", "yes") == "yes";
-document.getElementById("showOutlook").addEventListener("click", function () {
-  document.getElementById("showOutlook").checked =
-    getStorage("showOutlook", "yes") == "no";
-  localStorage.setItem(
-    "showOutlook",
-    getStorage("showOutlook", "yes") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showOnedrive").checked =
-  getStorage("showOnedrive", "no") == "yes";
-document.getElementById("showOnedrive").addEventListener("click", function () {
-  document.getElementById("showOnedrive").checked =
-    getStorage("showOnedrive", "no") == "no";
-  localStorage.setItem(
-    "showOnedrive",
-    getStorage("showOnedrive", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showMathspace").checked =
-  getStorage("showMathspace", "no") == "yes";
-document.getElementById("showMathspace").addEventListener("click", function () {
-  document.getElementById("showMathspace").checked =
-    getStorage("showMathspace", "no") == "no";
-  localStorage.setItem(
-    "showMathspace",
-    getStorage("showMathspace", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showEP").checked = getStorage("showEP", "no") == "yes";
-document.getElementById("showEP").addEventListener("click", function () {
-  document.getElementById("showEP").checked =
-    getStorage("showEP", "no") == "no";
-  localStorage.setItem(
-    "showEP",
-    getStorage("showEP", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showStile").checked =
-  getStorage("showStile", "no") == "yes";
-document.getElementById("showStile").addEventListener("click", function () {
-  document.getElementById("showStile").checked =
-    getStorage("showStile", "no") == "no";
-  localStorage.setItem(
-    "showStile",
-    getStorage("showStile", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showGithub").checked =
-  getStorage("showGithub", "no") == "yes";
-document.getElementById("showGithub").addEventListener("click", function () {
-  document.getElementById("showGithub").checked =
-    getStorage("showGithub", "no") == "no";
-  localStorage.setItem(
-    "showGithub",
-    getStorage("showGithub", "no") == "no" ? "yes" : "no"
-  );
-  CHANGELINKS = true;
-});
-
-document.getElementById("showStackoverflow").checked =
-  getStorage("showStackoverflow", "no") == "yes";
-document
-  .getElementById("showStackoverflow")
-  .addEventListener("click", function () {
-    document.getElementById("showStackoverflow").checked =
-      getStorage("showStackoverflow", "no") == "no";
+function checkboxAuto(id,d) {
+  document.getElementById(id).checked =
+    getStorage(id, d) == "yes";
+  document.getElementById(id).addEventListener("click", function () {
+    document.getElementById(id).checked =
+      getStorage(id, d) == "no";
     localStorage.setItem(
-      "showStackoverflow",
-      getStorage("showStackoverflow", "no") == "no" ? "yes" : "no"
+      id,
+      getStorage(id, d) == "no" ? "yes" : "no"
     );
-    CHANGELINKS = true;
   });
+}
+
+checkboxAuto("24hmode","yes")
+
+checkboxAuto("seconds","no")
+
+checkboxAuto("showYoutube","yes")
+
+checkboxAuto("showDiscord","no")
+
+checkboxAuto("showReddit","no")
+
+checkboxAuto("showConnect","yes")
+
+checkboxAuto("showOutlook","yes")
+
+checkboxAuto("showOnedrive","no")
+
+checkboxAuto("showMathspace","no")
+
+checkboxAuto("showEP","no")
+
+checkboxAuto("showStile","no")
+
+checkboxAuto("showGithub","no")
+
+checkboxAuto("showStackoverflow","no")
 
 document.getElementById("searchBar").addEventListener("keypress", function (e) {
   if (e.code === "Enter") {
