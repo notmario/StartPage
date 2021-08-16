@@ -16,20 +16,35 @@ function getStorage(item, unset) {
 }
 
 function loadTheme(themeName) {
-  let theme = themeArr[themeName]();
-  let r = document.querySelector(":root");
-  r.style.setProperty("--bg", theme.bg);
-  r.style.setProperty("--bg-2", theme.bg2);
-  r.style.setProperty("--text-color", theme.textCol);
-  r.style.setProperty("--link-color", theme.linkCol);
-  r.style.setProperty("--link-hover", theme.linkHov);
-  r.style.setProperty("--font-family", theme.font);
-  document.getElementById("settingsButton").src = theme.settingSrc;
-  document.getElementById("backgroundImage").style.display =
-    theme.bgImg.display;
-  document.getElementById("backgroundImage").style.opacity =
-    theme.bgImg.opacity;
-  document.getElementById("backgroundImage").src = theme.bgImg.src;
+  if (getStorage("customBackground","no") == "yes") {
+    // Ah shit, gotta do it customly
+    let r = document.querySelector(":root");
+    r.style.setProperty("--bg", "#121212");
+    r.style.setProperty("--bg-2", "#101010");
+    r.style.setProperty("--text-color", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
+    r.style.setProperty("--link-color", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
+    r.style.setProperty("--link-hover", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
+    r.style.setProperty("--font-family", "Roboto");
+    document.getElementById("settingsButton").src = (getStorage("customDarkText","no") == "yes") ? "img/settingsBlack.png" : "img/settings.png";
+    document.getElementById("backgroundImage").style.display = "block"
+    document.getElementById("backgroundImage").style.opacity = Number(getStorage("customBackgroundOpacity","0.3"))
+    document.getElementById("backgroundImage").src = getStorage("customBackgroundSrc","img/empty.png");
+  } else {
+    let theme = themeArr[themeName]();
+    let r = document.querySelector(":root");
+    r.style.setProperty("--bg", theme.bg);
+    r.style.setProperty("--bg-2", theme.bg2);
+    r.style.setProperty("--text-color", theme.textCol);
+    r.style.setProperty("--link-color", theme.linkCol);
+    r.style.setProperty("--link-hover", theme.linkHov);
+    r.style.setProperty("--font-family", theme.font);
+    document.getElementById("settingsButton").src = theme.settingSrc;
+    document.getElementById("backgroundImage").style.display =
+      theme.bgImg.display;
+    document.getElementById("backgroundImage").style.opacity =
+      theme.bgImg.opacity;
+    document.getElementById("backgroundImage").src = theme.bgImg.src;
+  }
 }
 
 function hslToHex(h, s, l) {
@@ -884,7 +899,7 @@ document
 for (weekID of ["A", "B"]) {
   for (day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]) {
     let dayTitle = document.createElement("div");
-    dayTitle.classList.add("theperfectsize");
+    dayTitle.classList.add("evenperfecter");
     dayTitle.innerHTML = `${
       ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][day]
     } ${weekID}`;
@@ -913,12 +928,15 @@ for (weekID of ["A", "B"]) {
       });
       inputHolder.appendChild(label);
       inputHolder.appendChild(input);
+      input.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
       theflexbox.appendChild(inputHolder);
     }
+    theflexbox.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
     document.getElementById("timetableInputHolder").appendChild(theflexbox);
   }
   let br = document.createElement("br");
   document.getElementById("timetableInputHolder").appendChild(br);
+  br.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
 }
 let notice = document.createElement("div");
 notice.innerText = "Reload page for changes to take effect";
@@ -1006,6 +1024,14 @@ function checkboxAuto(id,d) {
       id,
       getStorage(id, d) == "no" ? "yes" : "no"
     );
+    CHANGELINKS = true;
+    if (id == "customBackground") {
+      document.getElementById("customBackgroundSettings").style.display = getStorage(id, d) == "yes" ? "inline-block" : "none"
+      loadTheme(getStorage("themeSetting","dark"));
+    }
+    if (id == "customDarkText") {
+      loadTheme(getStorage("themeSetting","dark"));
+    }
   });
 }
 
@@ -1034,6 +1060,35 @@ checkboxAuto("showStile","no")
 checkboxAuto("showGithub","no")
 
 checkboxAuto("showStackoverflow","no")
+
+checkboxAuto("customBackground","no")
+
+document.getElementById("customBackgroundSettings").style.display = getStorage("customBackground","no") == "yes" ? "inline-block" : "none"
+
+
+document.getElementById("customBackgroundSrc").addEventListener("change", function (e) {
+  //upload file to localstorage
+  var file = document.getElementById("customBackgroundSrc").files[0];
+  var reader = new FileReader();
+  reader.onload = function () {
+    localStorage.setItem("customBackgroundSrc", this.result);
+  };
+  reader.readAsDataURL(file);
+  loadTheme(getStorage("themeSetting","dark"));
+});
+
+checkboxAuto("customDarkText","no")
+
+document.getElementById("customBackgroundButton").addEventListener("click",()=>{
+  document.getElementById("customBackgroundSrc").click()
+})
+
+document.getElementById("customBackgroundOpacity").value = Number(getStorage("customBackgroundOpacity","0.3"))*100
+
+document.getElementById("customBackgroundOpacity").addEventListener("change",()=>{
+  localStorage.setItem("customBackgroundOpacity", document.getElementById("customBackgroundOpacity").value/100);
+  loadTheme(getStorage("themeSetting","dark"));
+})
 
 document.getElementById("searchBar").addEventListener("keypress", function (e) {
   if (e.code === "Enter") {
