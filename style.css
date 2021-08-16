@@ -108,7 +108,7 @@ a {
 a:hover {
   /* color: var(--link-hover); I cry every time */
   font-weight: 500;
-  letter-spacing: .08rem;
+  letter-spacing: 0.08rem;
 }
 #weather {
   padding: 1rem;
@@ -182,8 +182,8 @@ textarea:focus {
 .button {
   background: "white";
   color: "black";
-  font-size: .9rem;
-  padding: .2rem .4rem .2rem .4rem;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem 0.2rem 0.4rem;
   border: 0px solid transparent;
-  border-radius: .5rem
+  border-radius: 0.5rem;
 }

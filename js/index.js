@@ -3,7 +3,7 @@
 //var messageNormal = ["Funny message","Wow comedy","//give me api keys","epic!","wow. anyways do something","@everyone you should be working on the movie","css is pain"]
 //var messageSchool = ["school. it exists","off and away all day","Do some work or smth","Wow incredible","Mathspace lol","wow school so cool","school related message"]
 //var messageNight = ["Go to sleep","go to bed","ok bye slep time :bed:","should you really go to sleep? yes.","filler message, go to sleep","go to sleep you fool","sleep is essential"]
-let lolsubs = ["Before School", "Recess", "Lunch", "Home", "temp"]
+let lolsubs = ["Before School", "Recess", "Lunch", "Home", "temp"];
 
 Date.prototype.getWeek = function () {
   var onejan = new Date(this.getFullYear(), 0, 1);
@@ -16,19 +16,36 @@ function getStorage(item, unset) {
 }
 
 function loadTheme(themeName) {
-  if (getStorage("customBackground","no") == "yes") {
+  if (getStorage("customBackground", "no") == "yes") {
     // Ah shit, gotta do it customly
     let r = document.querySelector(":root");
     r.style.setProperty("--bg", "#121212");
     r.style.setProperty("--bg-2", "#101010");
-    r.style.setProperty("--text-color", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
-    r.style.setProperty("--link-color", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
-    r.style.setProperty("--link-hover", (getStorage("customDarkText","no") == "yes") ? "black" : "white");
+    r.style.setProperty(
+      "--text-color",
+      getStorage("customDarkText", "no") == "yes" ? "black" : "white"
+    );
+    r.style.setProperty(
+      "--link-color",
+      getStorage("customDarkText", "no") == "yes" ? "black" : "white"
+    );
+    r.style.setProperty(
+      "--link-hover",
+      getStorage("customDarkText", "no") == "yes" ? "black" : "white"
+    );
     r.style.setProperty("--font-family", "Roboto");
-    document.getElementById("settingsButton").src = (getStorage("customDarkText","no") == "yes") ? "img/settingsBlack.png" : "img/settings.png";
-    document.getElementById("backgroundImage").style.display = "block"
-    document.getElementById("backgroundImage").style.opacity = Number(getStorage("customBackgroundOpacity","0.3"))
-    document.getElementById("backgroundImage").src = getStorage("customBackgroundSrc","img/empty.png");
+    document.getElementById("settingsButton").src =
+      getStorage("customDarkText", "no") == "yes"
+        ? "img/settingsBlack.png"
+        : "img/settings.png";
+    document.getElementById("backgroundImage").style.display = "block";
+    document.getElementById("backgroundImage").style.opacity = Number(
+      getStorage("customBackgroundOpacity", "0.3")
+    );
+    document.getElementById("backgroundImage").src = getStorage(
+      "customBackgroundSrc",
+      "img/empty.png"
+    );
   } else {
     let theme = themeArr[themeName]();
     let r = document.querySelector(":root");
@@ -117,14 +134,14 @@ function updateTime() {
 
   // console.log(d_str);
   let amPm = "";
-  if (getStorage("24hmode","yes") == "no") {
+  if (getStorage("24hmode", "yes") == "no") {
     if (hours >= 12) {
-      amPm = '<span class="bitdefender"> pm</span>'
+      amPm = '<span class="bitdefender"> pm</span>';
     } else {
-      amPm = '<span class="bitdefender"> am</span>'
+      amPm = '<span class="bitdefender"> am</span>';
     }
-    hours %= 12
-    if (hours == 0) hours+=12
+    hours %= 12;
+    if (hours == 0) hours += 12;
   }
   hours = hours >= 10 ? hours : "0" + hours;
   minutes = minutes >= 10 ? minutes : "0" + minutes;
@@ -184,7 +201,7 @@ function updateTime() {
       schoolLinks.length == 0 ? "none" : "block";
     document.getElementById("schoolLinks").innerHTML = "<h2>school</h2>";
     document.getElementById("subjectLinks").style.display =
-    subjectLinks.length == 0 ? "none" : "block";
+      subjectLinks.length == 0 ? "none" : "block";
     document.getElementById("subjectLinks").innerHTML = "<h2>subjects</h2>";
     document.getElementById("codingLinks").style.display =
       codingLinks.length == 0 ? "none" : "block";
@@ -808,12 +825,7 @@ function updateTimetable() {
         currentSub = subject.name;
         let oldLength = length;
         length = 0;
-        if (
-          lolsubs.indexOf(
-            oldSub
-          ) != -1
-        )
-          continue;
+        if (lolsubs.indexOf(oldSub) != -1) continue;
         text += (oldLength > 0 ? "Double " : "") + oldSub + "<br>";
       }
     }
@@ -827,8 +839,10 @@ function updateTimetable() {
     if (pickNextOne && subject.name != thisSub.name) {
       //Aargh i am do sumb
       nextSub = subject;
-      subsAfter = timetable[trueDate].slice(timetable[trueDate].indexOf(subject)+1)
-      console.log(subsAfter)
+      subsAfter = timetable[trueDate].slice(
+        timetable[trueDate].indexOf(subject) + 1
+      );
+      console.log(subsAfter);
       break;
     }
     if (subject.start <= nowStamp && nowStamp <= subject.finish) {
@@ -851,8 +865,10 @@ function updateTimetable() {
   if (subsAfter.length == 0) {
     document.getElementById("after").style.display = "none";
   } else {
-    document.getElementById("afterSub").innerText = subsAfter.map(s => s.name).filter(n => lolsubs.indexOf(n) == -1).join("\n");
-
+    document.getElementById("afterSub").innerText = subsAfter
+      .map((s) => s.name)
+      .filter((n) => lolsubs.indexOf(n) == -1)
+      .join("\n");
   }
   document.getElementById("upNextSubject").innerHTML =
     (nextSub.finish - nextSub.start > 3600 ? "Double " : "") + nextSub.name;
@@ -928,15 +944,21 @@ for (weekID of ["A", "B"]) {
       });
       inputHolder.appendChild(label);
       inputHolder.appendChild(input);
-      input.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
+      input.classList.add(
+        "reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis"
+      );
       theflexbox.appendChild(inputHolder);
     }
-    theflexbox.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
+    theflexbox.classList.add(
+      "reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis"
+    );
     document.getElementById("timetableInputHolder").appendChild(theflexbox);
   }
   let br = document.createElement("br");
   document.getElementById("timetableInputHolder").appendChild(br);
-  br.classList.add("reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis")
+  br.classList.add(
+    "reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis"
+  );
 }
 let notice = document.createElement("div");
 notice.innerText = "Reload page for changes to take effect";
@@ -1014,81 +1036,87 @@ document.getElementById("searchEngine").addEventListener("change", function () {
   ).placeholder = `Search with ${this.value}`;
   localStorage.setItem("searchEngine", this.value);
 });
-function checkboxAuto(id,d) {
-  document.getElementById(id).checked =
-    getStorage(id, d) == "yes";
+function checkboxAuto(id, d) {
+  document.getElementById(id).checked = getStorage(id, d) == "yes";
   document.getElementById(id).addEventListener("click", function () {
-    document.getElementById(id).checked =
-      getStorage(id, d) == "no";
-    localStorage.setItem(
-      id,
-      getStorage(id, d) == "no" ? "yes" : "no"
-    );
+    document.getElementById(id).checked = getStorage(id, d) == "no";
+    localStorage.setItem(id, getStorage(id, d) == "no" ? "yes" : "no");
     CHANGELINKS = true;
     if (id == "customBackground") {
-      document.getElementById("customBackgroundSettings").style.display = getStorage(id, d) == "yes" ? "inline-block" : "none"
-      loadTheme(getStorage("themeSetting","dark"));
+      document.getElementById("customBackgroundSettings").style.display =
+        getStorage(id, d) == "yes" ? "inline-block" : "none";
+      loadTheme(getStorage("themeSetting", "dark"));
     }
     if (id == "customDarkText") {
-      loadTheme(getStorage("themeSetting","dark"));
+      loadTheme(getStorage("themeSetting", "dark"));
     }
   });
 }
 
-checkboxAuto("24hmode","yes")
+checkboxAuto("24hmode", "yes");
 
-checkboxAuto("seconds","no")
+checkboxAuto("seconds", "no");
 
-checkboxAuto("showYoutube","yes")
+checkboxAuto("showYoutube", "yes");
 
-checkboxAuto("showDiscord","no")
+checkboxAuto("showDiscord", "no");
 
-checkboxAuto("showReddit","no")
+checkboxAuto("showReddit", "no");
 
-checkboxAuto("showConnect","yes")
+checkboxAuto("showConnect", "yes");
 
-checkboxAuto("showOutlook","yes")
+checkboxAuto("showOutlook", "yes");
 
-checkboxAuto("showOnedrive","no")
+checkboxAuto("showOnedrive", "no");
 
-checkboxAuto("showMathspace","no")
+checkboxAuto("showMathspace", "no");
 
-checkboxAuto("showEP","no")
+checkboxAuto("showEP", "no");
 
-checkboxAuto("showStile","no")
+checkboxAuto("showStile", "no");
 
-checkboxAuto("showGithub","no")
+checkboxAuto("showGithub", "no");
 
-checkboxAuto("showStackoverflow","no")
+checkboxAuto("showStackoverflow", "no");
 
-checkboxAuto("customBackground","no")
+checkboxAuto("customBackground", "no");
 
-document.getElementById("customBackgroundSettings").style.display = getStorage("customBackground","no") == "yes" ? "inline-block" : "none"
+document.getElementById("customBackgroundSettings").style.display =
+  getStorage("customBackground", "no") == "yes" ? "inline-block" : "none";
 
+document
+  .getElementById("customBackgroundSrc")
+  .addEventListener("change", function (e) {
+    //upload file to localstorage
+    var file = document.getElementById("customBackgroundSrc").files[0];
+    var reader = new FileReader();
+    reader.onload = function () {
+      localStorage.setItem("customBackgroundSrc", this.result);
+      loadTheme(getStorage("themeSetting", "dark"));
+    };
+    reader.readAsDataURL(file);
+  });
 
-document.getElementById("customBackgroundSrc").addEventListener("change", function (e) {
-  //upload file to localstorage
-  var file = document.getElementById("customBackgroundSrc").files[0];
-  var reader = new FileReader();
-  reader.onload = function () {
-    localStorage.setItem("customBackgroundSrc", this.result);
-  };
-  reader.readAsDataURL(file);
-  loadTheme(getStorage("themeSetting","dark"));
-});
+checkboxAuto("customDarkText", "no");
 
-checkboxAuto("customDarkText","no")
+document
+  .getElementById("customBackgroundButton")
+  .addEventListener("click", () => {
+    document.getElementById("customBackgroundSrc").click();
+  });
 
-document.getElementById("customBackgroundButton").addEventListener("click",()=>{
-  document.getElementById("customBackgroundSrc").click()
-})
+document.getElementById("customBackgroundOpacity").value =
+  Number(getStorage("customBackgroundOpacity", "0.3")) * 100;
 
-document.getElementById("customBackgroundOpacity").value = Number(getStorage("customBackgroundOpacity","0.3"))*100
-
-document.getElementById("customBackgroundOpacity").addEventListener("change",()=>{
-  localStorage.setItem("customBackgroundOpacity", document.getElementById("customBackgroundOpacity").value/100);
-  loadTheme(getStorage("themeSetting","dark"));
-})
+document
+  .getElementById("customBackgroundOpacity")
+  .addEventListener("change", () => {
+    localStorage.setItem(
+      "customBackgroundOpacity",
+      document.getElementById("customBackgroundOpacity").value / 100
+    );
+    loadTheme(getStorage("themeSetting", "dark"));
+  });
 
 document.getElementById("searchBar").addEventListener("keypress", function (e) {
   if (e.code === "Enter") {
