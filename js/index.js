@@ -836,7 +836,7 @@ function updateTimetable() {
   if (subsAfter.length == 0) {
     document.getElementById("after").style.display = "none";
   } else {
-    document.getElementById("afterSub").innerText = subsAfter.map(s => s.name).join("\n");
+    document.getElementById("afterSub").innerText = subsAfter.map(s => s.name).filter(n => lolsubs.indexOf(n) == -1).join("\n");
 
   }
   document.getElementById("upNextSubject").innerHTML =
