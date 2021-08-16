@@ -95,12 +95,14 @@ body {
 }
 a {
   color: var(--link-color);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, font-weight 0.2s ease, letter-spacing 0.2s ease;
   text-decoration: none;
   font-size: 120%;
 }
 a:hover {
-  color: var(--link-hover);
+  /* color: var(--link-hover); I cry every time */
+  font-weight: 500;
+  letter-spacing: .05rem;
 }
 #weather {
   padding: 1rem;
@@ -167,4 +169,7 @@ a:hover {
 input:focus,
 textarea:focus {
   outline: none;
+}
+.linkBox {
+  width: 8rem;
 }
