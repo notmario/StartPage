@@ -833,7 +833,7 @@ function updateTimetable() {
     document.getElementById("timetable").style.display = "none";
     document.getElementById("timetableFull").style.display = "block";
   }
-  if (subsAfter.length == 0) {
+  if (subsAfter.map(s => s.name).filter(n => lolsubs.indexOf(n) == -1).length == 0) {
     document.getElementById("after").style.display = "none";
   } else {
     document.getElementById("afterSub").innerText = subsAfter.map(s => s.name).filter(n => lolsubs.indexOf(n) == -1).join("\n");
