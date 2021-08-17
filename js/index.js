@@ -196,16 +196,16 @@ function updateTime() {
       : "";
     document.getElementById("mediaLinks").style.display =
       mediaLinks.length == 0 ? "none" : "block";
-    document.getElementById("mediaLinks").innerHTML = "<h2>media</h2>";
+    document.getElementById("mediaLinks").innerHTML = "<h2 class='ilikethisone'>media</h2>";
     document.getElementById("schoolLinks").style.display =
       schoolLinks.length == 0 ? "none" : "block";
-    document.getElementById("schoolLinks").innerHTML = "<h2>school</h2>";
+    document.getElementById("schoolLinks").innerHTML = "<h2 class='ilikethisone'>school</h2>";
     document.getElementById("subjectLinks").style.display =
       subjectLinks.length == 0 ? "none" : "block";
-    document.getElementById("subjectLinks").innerHTML = "<h2>subjects</h2>";
+    document.getElementById("subjectLinks").innerHTML = "<h2 class='ilikethisone'>subjects</h2>";
     document.getElementById("codingLinks").style.display =
       codingLinks.length == 0 ? "none" : "block";
-    document.getElementById("codingLinks").innerHTML = "<h2>coding</h2>";
+    document.getElementById("codingLinks").innerHTML = "<h2 class='ilikethisone'>coding</h2>";
     for (link of mediaLinks) {
       let linkElem = document.createElement("a");
       linkElem.innerHTML = link;
