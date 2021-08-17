@@ -93,7 +93,7 @@
         </select><br>
         <span class="medium">24h clock: </span><input type="checkbox" id="24hmode">&nbsp;&nbsp;&nbsp;
         <span class="medium">Show seconds on clock: </span> <input type="checkbox" id="seconds"><br>
-        <span class="justbigenough">Links: </span> 
+        <span class="theperfectsize">Links: </span> 
           <span class="theperfectsize">Youtube</span>&nbsp;<input type="checkbox" id="showYoutube"> &nbsp;
           <span class="theperfectsize">Discord</span>&nbsp;<input type="checkbox" id="showDiscord"> &nbsp;
           <span class="theperfectsize">Reddit</span>&nbsp;<input type="checkbox" id="showReddit"> &nbsp;
@@ -106,6 +106,12 @@
           <span class="theperfectsize">Github</span>&nbsp;<input type="checkbox" id="showGithub"> &nbsp;
           <span class="theperfectsize">Stackoverflow</span>&nbsp;<input type="checkbox" id="showStackoverflow"> &nbsp;
         <br>
+        <span class="theperfectsize">Custom background: </span><input type="checkbox" id="customBackground"><div id="customBackgroundSettings" class="theperfectsize">&nbsp;&nbsp;
+          <input id="customBackgroundSrc" type="file" accept="image/*" style="display:none"/>
+          <button id="customBackgroundButton" style="display:inline-block;" class="button">Change background</button>
+          <span class="theperfectsize">Dark text</span>&nbsp;<input type="checkbox" id="customDarkText"> &nbsp;
+          <span class="theperfectsize">Opacity:</span>&nbsp;<input type="range" min="1" max="100" value="30" class="slider" id="customBackgroundOpacity">
+        </div>
       </div></div>
     </div>
   </div>

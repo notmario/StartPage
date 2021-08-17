@@ -168,11 +168,11 @@ const themeArr = {
       textCol: "green",
       linkCol: "red",
       linkHov: "blue",
-      settingSrc: "img/settings.png",
+      settingSrc: "img/settingsGraphicdesign.png",
       bgImg: {
         display: "block",
-        src: "",
-        opacity: "0.2",
+        src: "img/graphicdesign.png",
+        opacity: "0.8",
       },
       font: "Comic Sans MS",
     };

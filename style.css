@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 :root {
   --bg: #121212;
   --bg-2: #101010;
@@ -37,6 +37,7 @@ body {
   transition: 0.04s ease-out;
   overflow: hidden;
   justify-content: center;
+  z-index: -1;
 }
 
 .center {
@@ -67,6 +68,9 @@ body {
 .theperfectsize {
   font-size: 1.3rem;
 }
+.evenperfecter {
+  font-size: 1.2rem;
+}
 .funny {
   font-size: 1.15rem;
 }
@@ -79,9 +83,11 @@ body {
 .small {
   font-size: 1rem;
 }
-
 .absurdlysmall {
   font-size: 0.75rem;
+}
+.reallytinyimeanabsolutelymicroscopicyouwillneedamagnifyingglasstoseethis {
+  font-size: 0.5rem;
 }
 
 #linksContainer {
@@ -102,7 +108,7 @@ a {
 a:hover {
   /* color: var(--link-hover); I cry every time */
   font-weight: 500;
-  letter-spacing: .05rem;
+  letter-spacing: 0.08rem;
 }
 #weather {
   padding: 1rem;
@@ -164,7 +170,7 @@ a:hover {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  z-index: -999;
+  z-index: -9999;
 }
 input:focus,
 textarea:focus {
@@ -172,4 +178,12 @@ textarea:focus {
 }
 .linkBox {
   width: 8rem;
+}
+.button {
+  background: "white";
+  color: "black";
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+  border: 0px solid transparent;
+  border-radius: 0.5rem;
 }
