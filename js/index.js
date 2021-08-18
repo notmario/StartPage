@@ -3,7 +3,7 @@
 //var messageNormal = ["Funny message","Wow comedy","//give me api keys","epic!","wow. anyways do something","@everyone you should be working on the movie","css is pain"]
 //var messageSchool = ["school. it exists","off and away all day","Do some work or smth","Wow incredible","Mathspace lol","wow school so cool","school related message"]
 //var messageNight = ["Go to sleep","go to bed","ok bye slep time :bed:","should you really go to sleep? yes.","filler message, go to sleep","go to sleep you fool","sleep is essential"]
-let lolsubs = ["Before School", "Recess", "Lunch", "Home", "temp"];
+let lolsubs = ["Before School", "Recess", "Lunch", "Home", "temp", "Remove me"];
 
 Date.prototype.getWeek = function () {
   var onejan = new Date(this.getFullYear(), 0, 1);
@@ -866,7 +866,15 @@ function updateTimetable() {
     document.getElementById("after").style.display = "none";
   } else {
     document.getElementById("afterSub").innerText = subsAfter
-      .map((s) => s.name)
+      .map((s,i,a) => {
+        if (a?.[i+1]?.name === s.name) {
+          return "Double "+s.name
+        } else if (a?.[i-1]?.name === s.name) {
+          return "Remove me"
+        } {
+          return s.name
+        }
+      })
       .filter((n) => lolsubs.indexOf(n) == -1)
       .join("\n");
   }
