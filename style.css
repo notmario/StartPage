@@ -5,6 +5,7 @@
   --text-color: white;
   --link-color: lightgray;
   --link-hover: gray;
+  --blur: 0px;
 
   --font-family: "Roboto";
   /* --bg: rgb(0, 12, 24);
@@ -175,6 +176,7 @@ a:hover {
   width: 100vw;
   height: 100vh;
   z-index: -9999;
+  filter: blur(var(--blur))
 }
 input:focus,
 textarea:focus {

@@ -46,6 +46,7 @@ function loadTheme(themeName) {
       "customBackgroundSrc",
       "img/empty.png"
     );
+    r.style.setProperty("--blur", getStorage("customBackgroundBlur", "0")/100 + "rem");
   } else {
     let theme = themeArr[themeName]();
     let r = document.querySelector(":root");
@@ -55,6 +56,7 @@ function loadTheme(themeName) {
     r.style.setProperty("--link-color", theme.linkCol);
     r.style.setProperty("--link-hover", theme.linkHov);
     r.style.setProperty("--font-family", theme.font);
+    r.style.setProperty("--blur", theme.bgImg.blur + "rem");
     document.getElementById("settingsButton").src = theme.settingSrc;
     document.getElementById("backgroundImage").style.display =
       theme.bgImg.display;
@@ -842,7 +844,6 @@ function updateTimetable() {
       subsAfter = timetable[trueDate].slice(
         timetable[trueDate].indexOf(subject) + 1
       );
-      console.log(subsAfter);
       break;
     }
     if (subject.start <= nowStamp && nowStamp <= subject.finish) {
@@ -1122,6 +1123,16 @@ document
     localStorage.setItem(
       "customBackgroundOpacity",
       document.getElementById("customBackgroundOpacity").value / 100
+    );
+    loadTheme(getStorage("themeSetting", "dark"));
+  });
+
+document
+  .getElementById("customBackgroundBlur")
+  .addEventListener("change", () => {
+    localStorage.setItem(
+      "customBackgroundBlur",
+      document.getElementById("customBackgroundBlur").value
     );
     loadTheme(getStorage("themeSetting", "dark"));
   });

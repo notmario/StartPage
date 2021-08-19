@@ -11,6 +11,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -27,6 +28,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -42,7 +44,8 @@ const themeArr = {
       bgImg: {
         display: "block",
         src: "img/funMode.jpeg",
-        opacity: "0.2",
+        opacity: "0.3",
+        blur: "0.5"
       },
       font: "Roboto",
     };
@@ -59,6 +62,7 @@ const themeArr = {
         display: "block",
         src: "img/funMode.jpeg",
         opacity: "0.7",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -75,6 +79,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -91,6 +96,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -107,6 +113,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -124,6 +131,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -157,6 +165,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -173,6 +182,7 @@ const themeArr = {
         display: "block",
         src: "img/graphicdesign.png",
         opacity: "0.8",
+        blur: "0"
       },
       font: "Comic Sans MS",
     };
@@ -189,6 +199,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -205,6 +216,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -221,6 +233,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -237,6 +250,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -253,6 +267,7 @@ const themeArr = {
         display: "block",
         src: "img/funModePlus.jpeg",
         opacity: "1",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -269,6 +284,7 @@ const themeArr = {
         display: "none",
         src: "",
         opacity: "0",
+        blur: "0"
       },
       font: "Roboto",
     };
@@ -285,6 +301,7 @@ const themeArr = {
         display: "block",
         src: "img/sussy.jpeg",
         opacity: "0.2",
+        blur: "0"
       },
       font: "Roboto",
     };
