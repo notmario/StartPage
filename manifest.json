@@ -1,0 +1,8 @@
+{
+    "manifest_version": 3,
+    "version": "65535.6.9.420",
+    "name": "boris",
+    "chrome_url_overrides" : {
+        "newtab": "index.html"
+    }
+}
