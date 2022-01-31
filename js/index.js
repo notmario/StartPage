@@ -168,6 +168,7 @@ function updateTime() {
       github: "https://github.com/",
       stackoverflow: "https://https://stackoverflow.com//",
       mathspace: "https://mathspace.co/student",
+      brilliant: "https://mathspace.co/student",
       "e.p.": "https://www.educationperfect.com/app/#/",
       stile: "http://stileapp.com/login",
     };
@@ -188,6 +189,9 @@ function updateTime() {
     let subjectLinks = [];
     getStorage("showMathspace", "no") == "yes"
       ? subjectLinks.push("mathspace")
+      : "";
+    getStorage("showBrilliant", "no") == "yes"
+      ? subjectLinks.push("brilliant")
       : "";
     getStorage("showEP", "no") == "yes" ? subjectLinks.push("e.p.") : "";
     getStorage("showStile", "no") == "yes" ? subjectLinks.push("stile") : "";
@@ -1079,6 +1083,8 @@ checkboxAuto("showOutlook", "yes");
 checkboxAuto("showOnedrive", "no");
 
 checkboxAuto("showMathspace", "no");
+
+checkboxAuto("showBrilliant", "no");
 
 checkboxAuto("showEP", "no");
 
