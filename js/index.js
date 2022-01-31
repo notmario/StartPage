@@ -168,7 +168,7 @@ function updateTime() {
       github: "https://github.com/",
       stackoverflow: "https://https://stackoverflow.com//",
       mathspace: "https://mathspace.co/student",
-      brilliant: "https://mathspace.co/student",
+      brilliant: "https://brilliant.org/classroom/",
       "e.p.": "https://www.educationperfect.com/app/#/",
       stile: "http://stileapp.com/login",
     };
