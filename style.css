@@ -106,7 +106,7 @@ body {
 }
 a {
   color: var(--link-color);
-  transition: color 0.2s ease, font-weight 0.2s ease, letter-spacing 0.2s ease;
+  transition: color .5s ease, font-weight .5s ease, letter-spacing .5s ease;
   text-decoration: none;
   font-size: 120%;
 }
@@ -142,11 +142,13 @@ a:hover {
   bottom: 1rem;
   width: 4rem;
   opacity: 0.1;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 1s ease;
   z-index: 999;
+  transform: rotate(0deg);
 }
 #settingsButton:hover {
   opacity: 0.3;
+  transform: rotate(360deg);
 }
 .flexboxlol {
   display: flex;
@@ -169,7 +171,6 @@ a:hover {
   /* Most modern browsers support this now. */
   color: var(--link-hover);
 }
-
 #backgroundImage {
   opacity: 0.1;
   position: absolute;
