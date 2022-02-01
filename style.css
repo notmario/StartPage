@@ -40,7 +40,6 @@ body {
   justify-content: center;
   z-index: -1;
 }
-
 .center {
   display: flex;
   position: absolute;
@@ -113,7 +112,7 @@ a {
 a:hover {
   /* color: var(--link-hover); I cry every time */
   font-weight: 500;
-  letter-spacing: 0.08rem;
+  letter-spacing: .24rem;
 }
 #weather {
   padding: 1rem;
@@ -166,10 +165,19 @@ a:hover {
   border: none;
   color: var(--text-color);
   text-align: center;
+  letter-spacing: .08em;
+  transition: letter-spacing .5s ease;
 }
 #searchBar::placeholder {
   /* Most modern browsers support this now. */
   color: var(--link-hover);
+  transition: letter-spacing .5s ease;
+}
+#searchBar:hover,
+#searchBar:focus,
+#searchBar:hover::placeholder,
+#searchBar:focus::placeholder {
+  letter-spacing: .16em;
 }
 #backgroundImage {
   opacity: 0.1;
@@ -184,7 +192,8 @@ textarea:focus {
   outline: none;
 }
 .linkBox {
-  width: 9rem;
+  width: 11rem;
+  overflow-x: visible;
 }
 .button {
   background: "white";
