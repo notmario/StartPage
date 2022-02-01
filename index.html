@@ -17,106 +17,106 @@
   <body>
     <img src="img/settings.png" id="settingsButton">
     <img src="img/funMode.jpeg" id="backgroundImage" style="display: none;">
-    <div id="main">
-      <p class="small" id="weather"></p>
-      <div id="timetable">
-        <span class="funny">
-          Up next:
-        </span><br>
-        <span class="medium" id="upNextSubject">
-
-        </span><br>
-        <span class="lollmao" id="timeLeft">
-
-        </span>
-        <div id="after">
-          <span class="epick">
-            After that:
+    <div id="everythingHolder">
+      <div id="main">
+        <p class="small" id="weather"></p>
+        <div id="timetable">
+          <span class="funny">
+            Up next:
           </span><br>
-          <span class="small" id="afterSub">
+          <span class="medium" id="upNextSubject">
+
+          </span><br>
+          <span class="lollmao" id="timeLeft">
+
           </span>
+          <div id="after">
+            <span class="epick">
+              After that:
+            </span><br>
+            <span class="small" id="afterSub">
+            </span>
+          </div>
         </div>
-      </div>
-      <div id="timetableFull">
-        <span class="medium">
-          Tomorrow, you have
-        </span>
-        <br>
-        <span class="funny" id="tomorrowSubjects">
+        <div id="timetableFull">
+          <span class="medium">
+            Tomorrow, you have
+          </span>
+          <br>
+          <span class="funny" id="tomorrowSubjects">
 
-        </span>
-        <ul>
+          </span>
+          <ul>
 
-        </ul>
-      </div>
-      <div class="center"><div>
-        <p class="large" id="time"></p>
-        <p class="medium" id="date"></p>
-        <div class="small" id="linksContainer">
-          <div id="mediaLinks" class="linkBox"><h2>media</h2></div>
-          <div id="schoolLinks" class="linkBox"><h2>school</h2></div>
-          <div id="subjectLinks" class="linkBox"><h2>subjects</h2></div>
-          <div id="codingLinks" class="linkBox"><h2>coding</h2></div>
+          </ul>
         </div>
-        <br>
-        <input id="searchBar"
-          placeholder="Search with DuckDuckGo"
-        > </input>
-    </div></div>
-  </div>
-    <div id="settings">
-      
-      <div class="center"><div>
-        <div class="bitdefender">Settings</div>
-        <span class="bigbutnottoobig" id="toggleTimetableInput">Timetable ▸</span>
-        <div id="timetableInputHolder">
-          
-        </div><br>
-        <span class="medium">Theme: </span> <select name="themeInput" id="themeInput">
-          <optgroup label="Dark Themes" id="darkThemeInput">
-            <option value="dark">Dark</option>
-            <option value="abyss">Abyss</option>
-            <option value="purple">Purple</option>
-            <option value="solDark">Solarized Dark</option>
-          </optgroup>
-          <optgroup label="Light Themes" id="lightThemeInput">
-            <option value="light">Light</option>
-            <option value="solLight">Solarized Light</option>
-          </optgroup>
-          <optgroup style="display:none;" label="More Themes" id="moreThemeInput">
-          </optgroup>
-        </select><br>
-        <span class="medium">Search engine: </span> <select name="searchEngine" id="searchEngine">
-          <option value="Google">Google</option>
-          <option value="DuckDuckGo">DuckDuckGo</option>
-          <option value="Bing">Bing</option>
-        </select><br>
-        <span class="medium">24h clock: </span><input type="checkbox" id="24hmode">&nbsp;&nbsp;&nbsp;
-        <span class="medium">Show seconds on clock: </span> <input type="checkbox" id="seconds"><br>
-        <span class="theperfectsize">Links: </span> 
-          <span class="theperfectsize">Youtube</span>&nbsp;<input type="checkbox" id="showYoutube"> &nbsp;
-          <span class="theperfectsize">Discord</span>&nbsp;<input type="checkbox" id="showDiscord"> &nbsp;
-          <span class="theperfectsize">Reddit</span>&nbsp;<input type="checkbox" id="showReddit"> &nbsp;
-          <span class="theperfectsize">Connect</span>&nbsp;<input type="checkbox" id="showConnect"> &nbsp;
-          <span class="theperfectsize">Outlook</span>&nbsp;<input type="checkbox" id="showOutlook"> &nbsp;
-          <span class="theperfectsize">Onedrive</span>&nbsp;<input type="checkbox" id="showOnedrive"> &nbsp;
-          <span class="theperfectsize">Mathspace</span>&nbsp;<input type="checkbox" id="showMathspace"> &nbsp;
-          <span class="theperfectsize">Brilliant</span>&nbsp;<input type="checkbox" id="showBrilliant"> &nbsp;
-          <span class="theperfectsize">E.P.</span>&nbsp;<input type="checkbox" id="showEP"> &nbsp;
-          <span class="theperfectsize">Stile</span>&nbsp;<input type="checkbox" id="showStile"> &nbsp;
-          <span class="theperfectsize">Github</span>&nbsp;<input type="checkbox" id="showGithub"> &nbsp;
-          <span class="theperfectsize">Stackoverflow</span>&nbsp;<input type="checkbox" id="showStackoverflow"> &nbsp;
-        <br>
-        <span class="theperfectsize">Custom background: </span><input type="checkbox" id="customBackground"><div id="customBackgroundSettings" class="theperfectsize">&nbsp;&nbsp;
-          <input id="customBackgroundSrc" type="file" accept="image/*" style="display:none"/>
-          <button id="customBackgroundButton" style="display:inline-block;" class="button">Change background</button>
-          <span class="theperfectsize">Dark text</span>&nbsp;<input type="checkbox" id="customDarkText"> &nbsp;
-          <span class="theperfectsize">Opacity:</span>&nbsp;<input type="range" min="1" max="100" value="30" class="slider" id="customBackgroundOpacity">
-          <span class="theperfectsize">Blur:</span>&nbsp;<input type="range" min="0" max="200" value="0" class="slider" id="customBackgroundBlur">
-        </div>
+        <div class="center"><div>
+          <p class="large" id="time"></p>
+          <p class="medium" id="date"></p>
+          <div class="small" id="linksContainer">
+            <div id="mediaLinks" class="linkBox"><h2>media</h2></div>
+            <div id="schoolLinks" class="linkBox"><h2>school</h2></div>
+            <div id="subjectLinks" class="linkBox"><h2>subjects</h2></div>
+            <div id="codingLinks" class="linkBox"><h2>coding</h2></div>
+          </div>
+          <br>
+          <input id="searchBar"
+            placeholder="Search with DuckDuckGo"
+          > </input>
       </div></div>
     </div>
-  </div>
-  
+      <div id="settings">
+        <div class="center"><div>
+          <div class="bitdefender">Settings</div>
+          <span class="bigbutnottoobig" id="toggleTimetableInput">Timetable ▸</span>
+          <div id="timetableInputHolder">
+            
+          </div><br>
+          <span class="medium">Theme: </span> <select name="themeInput" id="themeInput">
+            <optgroup label="Dark Themes" id="darkThemeInput">
+              <option value="dark">Dark</option>
+              <option value="abyss">Abyss</option>
+              <option value="purple">Purple</option>
+              <option value="solDark">Solarized Dark</option>
+            </optgroup>
+            <optgroup label="Light Themes" id="lightThemeInput">
+              <option value="light">Light</option>
+              <option value="solLight">Solarized Light</option>
+            </optgroup>
+            <optgroup style="display:none;" label="More Themes" id="moreThemeInput">
+            </optgroup>
+          </select><br>
+          <span class="medium">Search engine: </span> <select name="searchEngine" id="searchEngine">
+            <option value="Google">Google</option>
+            <option value="DuckDuckGo">DuckDuckGo</option>
+            <option value="Bing">Bing</option>
+          </select><br>
+          <span class="medium">24h clock: </span><input type="checkbox" id="24hmode">&nbsp;&nbsp;&nbsp;
+          <span class="medium">Show seconds on clock: </span> <input type="checkbox" id="seconds"><br>
+          <span class="theperfectsize">Links: </span> 
+            <span class="theperfectsize">Youtube</span>&nbsp;<input type="checkbox" id="showYoutube"> &nbsp;
+            <span class="theperfectsize">Discord</span>&nbsp;<input type="checkbox" id="showDiscord"> &nbsp;
+            <span class="theperfectsize">Reddit</span>&nbsp;<input type="checkbox" id="showReddit"> &nbsp;
+            <span class="theperfectsize">Connect</span>&nbsp;<input type="checkbox" id="showConnect"> &nbsp;
+            <span class="theperfectsize">Outlook</span>&nbsp;<input type="checkbox" id="showOutlook"> &nbsp;
+            <span class="theperfectsize">Onedrive</span>&nbsp;<input type="checkbox" id="showOnedrive"> &nbsp;
+            <span class="theperfectsize">Mathspace</span>&nbsp;<input type="checkbox" id="showMathspace"> &nbsp;
+            <span class="theperfectsize">Brilliant</span>&nbsp;<input type="checkbox" id="showBrilliant"> &nbsp;
+            <span class="theperfectsize">E.P.</span>&nbsp;<input type="checkbox" id="showEP"> &nbsp;
+            <span class="theperfectsize">Stile</span>&nbsp;<input type="checkbox" id="showStile"> &nbsp;
+            <span class="theperfectsize">Github</span>&nbsp;<input type="checkbox" id="showGithub"> &nbsp;
+            <span class="theperfectsize">Stackoverflow</span>&nbsp;<input type="checkbox" id="showStackoverflow"> &nbsp;
+          <br>
+          <span class="theperfectsize">Custom background: </span><input type="checkbox" id="customBackground"><div id="customBackgroundSettings" class="theperfectsize">&nbsp;&nbsp;
+            <input id="customBackgroundSrc" type="file" accept="image/*" style="display:none"/>
+            <button id="customBackgroundButton" style="display:inline-block;" class="button">Change background</button>
+            <span class="theperfectsize">Dark text</span>&nbsp;<input type="checkbox" id="customDarkText"> &nbsp;
+            <span class="theperfectsize">Opacity:</span>&nbsp;<input type="range" min="1" max="100" value="30" class="slider" id="customBackgroundOpacity">
+            <span class="theperfectsize">Blur:</span>&nbsp;<input type="range" min="0" max="200" value="0" class="slider" id="customBackgroundBlur">
+          </div>
+        </div></div>
+      </div>
+    </div>
+    </div>
   </body>
 </html>

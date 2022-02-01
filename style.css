@@ -194,3 +194,7 @@ textarea:focus {
   border: 0px solid transparent;
   border-radius: 0.5rem;
 }
+#everythingHolder {
+  transform: translateY(0vh);
+  transition: transform 1s ease;
+}

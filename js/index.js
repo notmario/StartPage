@@ -919,16 +919,15 @@ getWeatherData();
 setInterval(getWeatherData, 900000); // 15 minutes
 
 let settingsShown = false;
-document.getElementById("settings").style.display = "none";
+document.getElementById("settings").style.transform = "translateY(100vh)";
+document.getElementById("main").style.transform = "translateY(0vh)";
 document
   .getElementById("settingsButton")
   .addEventListener("click", function () {
     if (!settingsShown) {
-      document.getElementById("main").style.display = "none";
-      document.getElementById("settings").style.display = "block";
+      document.getElementById("everythingHolder").style.transform = "translateY(-100vh)";
     } else {
-      document.getElementById("main").style.display = "block";
-      document.getElementById("settings").style.display = "none";
+      document.getElementById("everythingHolder").style.transform = "translateY(0vh)";
     }
     // console.log(document.getElementById("settings").style.display)
     settingsShown = !settingsShown;
