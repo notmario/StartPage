@@ -461,9 +461,9 @@ const timetable = [
     new Subject(
       getStorage("subThuA6", "Period 6"),
       hourMinuteToNumber(14, 15),
-      hourMinuteToNumber(15, 00)
+      hourMinuteToNumber(15, 10)
     ),
-    new Subject("Home", hourMinuteToNumber(15, 00), hourMinuteToNumber(16, 00)),
+    new Subject("Home", hourMinuteToNumber(15, 10), hourMinuteToNumber(16, 00)),
   ], // Thursday
   [
     new Subject(
@@ -716,6 +716,7 @@ const timetable = [
       hourMinuteToNumber(14, 15),
       hourMinuteToNumber(15, 10)
     ),
+    new Subject("Home", hourMinuteToNumber(15, 10), hourMinuteToNumber(16, 00)),
   ], // Thursday
   [
     new Subject(
