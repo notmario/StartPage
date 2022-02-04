@@ -319,7 +319,7 @@ const timetable = [
       hourMinuteToNumber(14, 30),
       hourMinuteToNumber(15, 25)
     ),
-    new Subject("Home", hourMinuteToNumber(15, 30), hourMinuteToNumber(16, 00)),
+    new Subject("Home", hourMinuteToNumber(15, 25), hourMinuteToNumber(16, 00)),
   ], // Monday
   [
     new Subject(
@@ -516,7 +516,7 @@ const timetable = [
       hourMinuteToNumber(14, 30),
       hourMinuteToNumber(15, 25)
     ),
-    new Subject("Home", hourMinuteToNumber(15, 30), hourMinuteToNumber(16, 00)),
+    new Subject("Home", hourMinuteToNumber(15, 25), hourMinuteToNumber(16, 00)),
   ], // Friday
   [], // Saturday
 
