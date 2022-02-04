@@ -306,4 +306,73 @@ const themeArr = {
       font: "Roboto",
     };
   },
+  blueBerry: () => {
+    return {
+      bg: "#D0E1F9",
+      bg2: "#C0D1F5",
+      textCol: "black",
+      linkCol: "black",
+      linkHov: "black",
+      settingSrc: "img/settingsBlack.png",
+      bgImg: {
+        display: "none",
+        src: "",
+        opacity: "0",
+        blur: "0"
+      },
+      font: "Roboto",
+    }
+  },
+  peach: () => {
+    return {
+      bg: "#FFD3B6",
+      bg2: "#f2c6a9",
+      textCol: "black",
+      linkCol: "black",
+      linkHov: "black",
+      settingSrc: "img/settingsBlack.png",
+      bgImg: {
+        display: "none",
+        src: "",
+        opacity: "0",
+        blur: "0"
+      },
+      font: "Roboto",
+    }
+  },
+  volcano: () => {
+    return {
+      bg: "#261c12",
+      bg2: "#2b1f14",
+      textCol: "white",
+      linkCol: "white",
+      linkHov: "white",
+      settingSrc: "img/settings.png",
+      bgImg: {
+        display: "none",
+        src: "",
+        opacity: "0",
+        blur: "0"
+      },
+      font: "Roboto",
+    }
+  },
+  mossy: () => {
+    // light green
+    return {
+      bg: "#d5e5cc",
+      bg2: "#c9e0be",
+      textCol: "black",
+      linkCol: "black",
+      linkHov: "black",
+      settingSrc: "img/settingsBlack.png",
+      bgImg: {
+        display: "none",
+        src: "",
+        opacity: "0",
+        blur: "0"
+      },
+      font: "Roboto",
+    }
+  },
 };
