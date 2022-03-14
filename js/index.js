@@ -162,6 +162,7 @@ function updateTime() {
       discord: "https://discord.com/",
       youtube: "https://youtube.com/",
       reddit: "https://reddit.com/",
+      compass: "https://perthmodern-wa.compass.education/",
       connect: "https://connect.det.wa.edu.au/",
       outlook: "https://outlook.office.com/mail/inbox/",
       onedrive: "https://onedrive.live.com/about/en-au/signin/",
@@ -177,6 +178,9 @@ function updateTime() {
     getStorage("showYoutube", "yes") == "yes" ? mediaLinks.push("youtube") : "";
     getStorage("showReddit", "no") == "yes" ? mediaLinks.push("reddit") : "";
     let schoolLinks = [];
+    getStorage("showCompass", "yes") == "yes"
+      ? schoolLinks.push("compass")
+      : "";
     getStorage("showConnect", "yes") == "yes"
       ? schoolLinks.push("connect")
       : "";
@@ -1085,7 +1089,9 @@ checkboxAuto("showDiscord", "no");
 
 checkboxAuto("showReddit", "no");
 
-checkboxAuto("showConnect", "yes");
+checkboxAuto("showCompass", "yes");
+
+checkboxAuto("showConnect", "no");
 
 checkboxAuto("showOutlook", "yes");
 
