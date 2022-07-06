@@ -1196,3 +1196,7 @@ document.getElementById("searchBar").addEventListener("keypress", function (e) {
     }
   }
 });
+
+if (window.location.href.indexOf("notmar.io") > -1) {
+  document.getElementById("notice").style.display = "block";
+}

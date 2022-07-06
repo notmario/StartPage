@@ -109,7 +109,7 @@ a {
   text-decoration: none;
   font-size: 120%;
 }
-a:hover {
+a:hover:not(.nohover) {
   /* color: var(--link-hover); I cry every time */
   font-weight: 500;
   letter-spacing: .24rem;
