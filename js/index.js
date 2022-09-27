@@ -56,6 +56,14 @@ function loadTheme(themeName) {
     r.style.setProperty("--link-color", theme.linkCol);
     r.style.setProperty("--link-hover", theme.linkHov);
     r.style.setProperty("--font-family", theme.font);
+    if (theme.font === "default") {
+      r.style.setProperty("--font-family", `"${localStorage.getItem("chosenfont") ?? "Roboto"}`);
+      if (localStorage.getItem("chosenfont") === "roboto mono") {
+        r.style.setProperty("--spacing", "-0.1rem");
+      } else {
+        r.style.setProperty("--spacing", "0");
+      }
+    }
     r.style.setProperty("--blur", theme.bgImg.blur + "rem");
     document.getElementById("settingsButton").src = theme.settingSrc;
     document.getElementById("backgroundImage").style.display =
@@ -1028,6 +1036,14 @@ if (getStorage("moreThemesUnlocked", "no") == "yes") {
   addThemeToMoreThemes("literallyNightMode", "Literally Night Mode");
   addThemeToMoreThemes("sussyBaka", "When the theme is sus 😳");
 }
+let chosenfont = getStorage("chosenfont", "roboto");
+document.getElementById("chosenfont").value = chosenfont;
+
+document.getElementById("chosenfont").addEventListener("change", function () {
+  localStorage.setItem("chosenfont", this.value);
+  loadTheme(getStorage("themeSetting", "dark"));
+});
+
 let theme = getStorage("themeSetting", "dark");
 document.getElementById("themeInput").value = theme;
 loadTheme(theme);

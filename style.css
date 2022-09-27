@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 :root {
   --bg: #121212;
   --bg-2: #101010;
@@ -15,6 +18,7 @@
   --bg: #FCF5E4;
   --bg-2: #F2EBDA; solarized light 
   for future reference */
+  --spacing: 0rem;
 }
 
 * {
@@ -22,6 +26,7 @@
   margin: 0px;
   padding: 0px;
   font-weight: 300;
+  letter-spacing: var(--spacing);
 }
 
 body {
@@ -166,12 +171,12 @@ a:hover:not(.nohover) {
   color: var(--text-color);
   text-align: center;
   letter-spacing: .08em;
-  transition: letter-spacing .5s ease;
+  transition: letter-spacing .5s ease !important;
 }
 #searchBar::placeholder {
   /* Most modern browsers support this now. */
   color: var(--link-hover);
-  transition: letter-spacing .5s ease;
+  transition: letter-spacing .5s ease !important;
 }
 #searchBar:hover,
 #searchBar:focus,

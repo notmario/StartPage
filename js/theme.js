@@ -13,7 +13,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   light: () => {
@@ -30,7 +30,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   funMode: () => {
@@ -47,7 +47,7 @@ const themeArr = {
         opacity: "0.3",
         blur: "0.5"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   trueFunMode: () => {
@@ -64,7 +64,7 @@ const themeArr = {
         opacity: "0.7",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   abyss: () => {
@@ -81,7 +81,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   solDark: () => {
@@ -98,7 +98,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   solLight: () => {
@@ -115,7 +115,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   rngDark: () => {
@@ -133,7 +133,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   rngLight: () => {
@@ -150,7 +150,7 @@ const themeArr = {
         src: "",
         opacity: "0",
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   purple: () => {
@@ -167,7 +167,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   graphicDesign: () => {
@@ -201,7 +201,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   shrekDark: () => {
@@ -218,7 +218,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   neon: () => {
@@ -235,7 +235,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   red: () => {
@@ -252,7 +252,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   funModePlus: () => {
@@ -269,7 +269,7 @@ const themeArr = {
         opacity: "1",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   literallyNightMode: () => {
@@ -286,7 +286,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   sussyBaka: () => {
@@ -303,7 +303,7 @@ const themeArr = {
         opacity: "0.2",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     };
   },
   blueBerry: () => {
@@ -320,7 +320,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     }
   },
   peach: () => {
@@ -337,7 +337,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     }
   },
   volcano: () => {
@@ -354,7 +354,7 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     }
   },
   mossy: () => {
@@ -372,7 +372,24 @@ const themeArr = {
         opacity: "0",
         blur: "0"
       },
-      font: "Roboto",
+      font: "default",
     }
+  },
+  darkplus: () => {
+    return {
+      bg: "#050505",
+      bg2: "#020202",
+      textCol: "white",
+      linkCol: "lightgray",
+      linkHov: "gray",
+      settingSrc: "img/settings.png",
+      bgImg: {
+        display: "none",
+        src: "",
+        opacity: "0",
+        blur: "0"
+      },
+      font: "default",
+    };
   },
 };
