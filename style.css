@@ -161,7 +161,13 @@ a:hover:not(.nohover) {
   justify-content: center;
 }
 .flexboxlol div {
-  padding: 0 1rem;
+  padding: 0 1em;
+}
+.subjectinput {
+  width: 10em;
+}
+.flexboxlol div.invisible {
+  transform: translateX(1000vw);
 }
 #searchBar {
   width: 90vw;

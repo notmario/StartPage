@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "version": "1.2.0",
+    "version": "1.2.2",
     "name": "Start Page",
     "description": "A start page with many useful features.",
     "chrome_url_overrides" : {
